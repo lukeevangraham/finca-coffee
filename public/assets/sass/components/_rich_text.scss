@@ -1,0 +1,57 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.rich-text {
+  padding: 12rem 0; // Large vertical breathing room
+  background-color: variables.$color-white; // Using your #eee
+
+  &__container {
+    max-width: 80rem; // Narrower than the grid for better reading lines
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  &__heading {
+    font-size: 4rem;
+    color: variables.$color-primary;
+    margin-bottom: 6rem;
+    text-align: center;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    @include mixins.respond(tab-port) {
+      font-size: 3.2rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__content {
+    font-size: 2rem; // Slightly larger for an "intro" feel
+    line-height: 1.8;
+    color: variables.$color-black;
+
+    // Quill alignment classes
+    .ql-align-center {
+      text-align: center;
+    }
+    .ql-align-right {
+      text-align: right;
+    }
+
+    p {
+      &:not(:last-child) {
+        margin-bottom: 3rem;
+      }
+    }
+
+    strong {
+      color: variables.$color-primary;
+      font-weight: 700;
+    }
+
+    @include mixins.respond(tab-port) {
+      font-size: 1.8rem;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.columns-section {
+  padding: 10rem 0;
+  background-color: variables.$color-white; // #eee
+
+  &__container {
+    max-width: variables.$grid-width; // 114rem
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  &__main-heading {
+    font-size: 4rem;
+    color: variables.$color-primary;
+    text-align: center;
+    margin-bottom: 8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    @include mixins.respond(tab-port) {
+      font-size: 3rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    gap: 4rem;
+    align-items: flex-start;
+
+    @include mixins.respond(tab-port) {
+      flex-direction: column;
+      gap: 6rem;
+    }
+  }
+
+  &__item {
+    flex: 1;
+    text-align: center;
+
+    // Styling the Quill output inside the columns
+    h2 {
+      font-size: 2.4rem;
+      color: variables.$color-secondary;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    p {
+      font-size: 1.7rem;
+      line-height: 1.7;
+      color: variables.$color-black;
+    }
+
+    // In case Quill adds alignment classes
+    .ql-align-center {
+      text-align: center;
+    }
+  }
+}

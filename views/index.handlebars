@@ -1,8 +1,25 @@
-<div class="u-padding-y-medium">
+{{!-- <div class="u-padding-y-medium"> --}}
 
-  <div class="row">
+  {{!-- <div class="row"> --}}
 
-    <h1>Welcome to Finca Coffee</h1>
+{{log sections}}
 
-  </div>
-</div>
+    {{#each sections}}
+  {{#if (eq __component "section.hero")}}
+  {{log we have a hero section}}
+    {{> sections/hero this}}
+  {{/if}}
+  
+  {{#if (eq __component "section.heading-above-rich-text")}}
+    {{> sections/heading_above_rich_text this}}
+  {{/if}}
+
+  {{#if (eq __component "section.heading-above-columns")}}
+    {{> sections/heading_above_columns this}}
+  {{/if}}
+
+  {{!-- Add other sections here --}}
+{{/each}}
+
+  {{!-- </div> --}}
+{{!-- </div> --}}

@@ -1,0 +1,13 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": ["*.handlebars", "*.hbs"],
+      "options": {
+        "parser": "glimmer"
+      }
+    }
+  ]
+}

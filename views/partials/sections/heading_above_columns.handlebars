@@ -1,0 +1,18 @@
+<section class='columns-section'>
+  <div class='columns-section__container'>
+
+    {{#if Heading}}
+      <h2 class='columns-section__main-heading'>{{Heading}}</h2>
+    {{/if}}
+
+    <div class='columns-section__grid'>
+      {{#each Column}}
+        <article class='columns-section__item'>
+          {{! Triple stash is mandatory for the Quill HTML }}
+          {{{Text}}}
+        </article>
+      {{/each}}
+    </div>
+
+  </div>
+</section>

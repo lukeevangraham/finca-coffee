@@ -1,0 +1,21 @@
+<section class='hero'>
+  {{#with mainImage.data.[0].attributes}}
+    <img
+      src='{{url}}'
+      srcset='{{getCloudinaryResize url 640}}, {{getCloudinaryResize
+        url
+        1200
+      }}, {{getCloudinaryResize url 1920}}'
+      sizes='100vw'
+      alt='{{alternativeText}}'
+      class='hero__image'
+    />
+  {{/with}}
+
+  <div class='hero__overlay'>
+    <div class='hero__content'>
+      <h1 class='hero__headline'>{{headline}}</h1>
+      <p class='hero__subheading'>{{subheading}}</p>
+    </div>
+  </div>
+</section>

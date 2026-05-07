@@ -1,0 +1,14 @@
+<section class='rich-text'>
+  <div class='rich-text__container'>
+
+    {{#if Heading}}
+      <h2 class='rich-text__heading'>{{Heading}}</h2>
+    {{/if}}
+
+    <div class='rich-text__content'>
+      {{! Triple stash renders the HTML tags from Quill }}
+      {{{RichText}}}
+    </div>
+
+  </div>
+</section>
