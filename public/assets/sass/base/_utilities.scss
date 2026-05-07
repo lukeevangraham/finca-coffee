@@ -1,0 +1,23 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
+.row {
+  max-width: variables.$grid-width;
+  padding: 0 1%;
+  margin: 0 auto;
+
+  @include mixins.respond(tab-land) {
+    padding: 0 3%;
+  }
+}
+
+.u-padding-y-medium {
+  padding: 8rem 0;
+}
+
+.desktop-only {
+  width: 100%;
+  @include mixins.respond(tab-port) {
+    display: none;
+  }
+}

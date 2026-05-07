@@ -1,0 +1,16 @@
+@use "../abstracts/mixins";
+
+.SideDrawer {
+  background-color: orangered;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 70%;
+  display: none;
+  transition: transform 0.3s ease-out;
+
+  @include mixins.respond(tab-port) {
+    display: block;
+  }
+}

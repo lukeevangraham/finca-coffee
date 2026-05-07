@@ -1,0 +1,166 @@
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+ORDER: Base + typography > general layout + grid > page layout > components
+
+1em = 16px
+*/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 4.778rem;
+}
+
+h2 {
+  font-size: 3.981rem;
+}
+
+h3 {
+  font-size: 3.318rem;
+}
+
+h4 {
+  font-size: 2.765rem;
+}
+
+h5 {
+  font-size: 2.304rem;
+}
+
+h6 {
+  font-size: 1.92rem;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.row {
+  max-width: 114rem;
+  padding: 0 1%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 75em) {
+  .row {
+    padding: 0 3%;
+  }
+}
+
+.u-padding-y-medium {
+  padding: 8rem 0;
+}
+
+.desktop-only {
+  width: 100%;
+}
+@media only screen and (max-width: 56.25em) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+.header {
+  background-color: #b5a8d5;
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header > :first-child {
+  flex-grow: 1;
+}
+.header nav ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4rem;
+}
+.header nav ul li {
+  list-style: none;
+}
+.header__drawer-toggle {
+  background-color: rgba(17, 17, 17, 0.5);
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: none;
+  padding: 10px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+.header__drawer-toggle div {
+  width: 50%;
+  height: 2px;
+  background-color: #eee;
+}
+@media only screen and (max-width: 56.25em) {
+  .header__drawer-toggle {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+.SideDrawer {
+  background-color: orangered;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 70%;
+  display: none;
+  transition: transform 0.3s ease-out;
+}
+@media only screen and (max-width: 56.25em) {
+  .SideDrawer {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
