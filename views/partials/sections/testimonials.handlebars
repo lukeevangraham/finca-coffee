@@ -1,0 +1,37 @@
+<section class='testimonials'>
+  <div class='testimonials__container'>
+
+    {{#if Heading}}
+      <h2 class='testimonials__main-heading'>{{Heading}}</h2>
+    {{/if}}
+
+    <div class='testimonials__grid'>
+      {{#each Testimony}}
+        <article class='testimonials__card'>
+
+          {{#if Photo.data}}
+            <div class='testimonials__avatar-box'>
+              {{! Using the thumbnail format for better performance }}
+              <img
+                src='{{Photo.data.attributes.formats.thumbnail.url}}'
+                alt='{{FirstName}}'
+                class='testimonials__avatar'
+              />
+            </div>
+          {{/if}}
+
+          <blockquote class='testimonials__quote'>
+            {{! If you use Quill in Strapi for the Statement, keep the triple-stash }}
+            {{{Statement}}}
+          </blockquote>
+
+          <div class='testimonials__author'>
+            <span class='testimonials__author-name'>{{FirstName}}</span>
+            <span class='testimonials__author-description'>{{LastName}}</span>
+          </div>
+        </article>
+      {{/each}}
+    </div>
+
+  </div>
+</section>

@@ -1,19 +1,32 @@
 // COLORS
-$color-primary: #211c84;
+// Deep Espresso - Use for primary headings and dark backgrounds
+$color-primary: #2c1b12;
 
-$color-secondary: #4d55cc;
+// Warm Latte/Rich Brown - Use for accents, buttons, or icons
+$color-secondary: #5f4339;
 
-$color-ternary: #7a73d1;
+// Toasted Almond/Muted Brown - Use for secondary accents or borders
+$color-ternary: #a68a78;
 
-$color-quaternary: #b5a8d5;
+// Crema/Off-White - Use for sections, card backgrounds, or secondary text
+$color-quaternary: #ede0d4;
 
-$color-white: #eee;
-$color-black: #111;
+// Soft Linen - Your new $color-white (pure #eee is a bit cold for coffee)
+$color-white: #f9f7f3;
+
+// Soft Charcoal - Better than pure black for text readability
+$color-black: #1a1a1a;
 
 // FONT
 $default-font-size: 1.6rem;
 
+$font-display: 'Merriweather', serif;
+$font-main: 'Open Sans', sans-serif;
+
+$weight-regular: 400;
+$weight-medium: 600;
+$weight-bold: 700;
+$weight-black: 900;
+
 // GRID
 $grid-width: 114rem;
-
-$font-display: 'Playfair Display', serif;

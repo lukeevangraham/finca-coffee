@@ -18,6 +18,14 @@
     {{> sections/heading_above_columns this}}
   {{/if}}
 
+  {{#if (eq __component "section.testimonies")}}
+    {{> sections/testimonials this}}
+  {{/if}}
+
+  {{#if (eq __component "section.heading-above-image-and-text")}}
+    {{> sections/features this}}
+  {{/if}}
+
   {{!-- Add other sections here --}}
 {{/each}}
 

@@ -1,0 +1,62 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.section-features {
+  padding: 10rem 0;
+
+  h2 {
+    text-align: center;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    max-width: 114rem;
+    margin: 0 auto 12rem auto;
+
+    // This flips the image and text for rows 2, 4, etc.
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__image-box,
+  &__text-box {
+    flex: 1;
+    ul {
+      list-style: none; // We'll create custom bullets for better control
+      margin-top: 2.5rem;
+    }
+
+    li {
+      font-size: 1.6rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+
+      // 1. Create space for the bullet
+      position: relative;
+      padding-left: 2.5rem;
+
+      // 2. Add the custom bullet
+      &::before {
+        content: '\2022'; // Standard bullet (or use \2014 for a long dash)
+        color: variables.$color-ternary; // Use your Finca brand color
+        font-weight: bold;
+        display: inline-block;
+
+        // 3. Position it absolutely so it doesn't affect text flow
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+  }
+}

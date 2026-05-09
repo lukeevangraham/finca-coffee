@@ -1,17 +1,35 @@
+@use '../abstracts/variables';
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: variables.$font-main;
+  font-weight: variables.$weight-regular;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: variables.$font-display;
+  font-weight: variables.$weight-black;
+  line-height: 1.25;
 }
 
 h1 {
+  font-family: 'Merriweather', serif;
   font-size: 4.778rem;
 }
 
 h2 {
   font-size: 3.981rem;
+  margin-bottom: 8rem;
 }
 
 h3 {
   font-size: 3.318rem;
+  margin-bottom: 2rem;
 }
 
 h4 {
