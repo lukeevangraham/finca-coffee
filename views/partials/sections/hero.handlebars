@@ -1,4 +1,5 @@
 <section class='hero'>
+  {{! 1. Handle the Image specifically }}
   {{#with mainImage.data.[0].attributes}}
     <img
       src='{{url}}'
@@ -12,6 +13,7 @@
     />
   {{/with}}
 
+  {{! 2. Handle the Text (Using the correct Strapi keys) }}
   <div class='hero__overlay'>
     <div class='hero__content'>
       <h1 class='hero__headline'>{{headline}}</h1>

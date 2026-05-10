@@ -7,29 +7,30 @@
 
     <div class='testimonials__grid'>
       {{#each Testimony}}
-        <article class='testimonials__card'>
+        <div class='testimonials__card'>
+          <div class='testimonials__stars'>
+            <span>★★★★★</span>
+          </div>
 
-          {{#if Photo.data}}
+          <blockquote class='testimonials__quote'>
+            {{Statement}}
+          </blockquote>
+
+          <div class='testimonials__user-box'>
             <div class='testimonials__avatar-box'>
-              {{! Using the thumbnail format for better performance }}
               <img
-                src='{{Photo.data.attributes.formats.thumbnail.url}}'
-                alt='{{FirstName}}'
+                src='{{Photo.data.attributes.url}}'
+                alt='{{FirstName}} {{LastName}}'
                 class='testimonials__avatar'
               />
             </div>
-          {{/if}}
-
-          <blockquote class='testimonials__quote'>
-            {{! If you use Quill in Strapi for the Statement, keep the triple-stash }}
-            {{{Statement}}}
-          </blockquote>
-
-          <div class='testimonials__author'>
-            <span class='testimonials__author-name'>{{FirstName}}</span>
-            <span class='testimonials__author-description'>{{LastName}}</span>
+            <div class='testimonials__author'>
+              <span class='testimonials__author-name'>{{FirstName}}
+              </span>
+              <span class='testimonials__author-description'>{{LastName}}</span>
+            </div>
           </div>
-        </article>
+        </div>
       {{/each}}
     </div>
 

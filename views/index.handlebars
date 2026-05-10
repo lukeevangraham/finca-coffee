@@ -2,7 +2,9 @@
 
   {{!-- <div class="row"> --}}
 
-{{log sections}}
+{{!-- {{log sections}} --}}
+
+<main>
 
     {{#each sections}}
   {{#if (eq __component "section.hero")}}
@@ -22,7 +24,11 @@
     {{> sections/testimonials this}}
   {{/if}}
 
-  {{#if (eq __component "section.heading-above-image-and-text")}}
+  {{!-- {{#if (eq __component "section.heading-above-image-and-text")}}
+    {{> sections/features this}}
+  {{/if}} --}}
+
+  {{#if (eq __component "section.heading-above-grid")}}
     {{> sections/features this}}
   {{/if}}
 
@@ -31,3 +37,5 @@
 
   {{!-- </div> --}}
 {{!-- </div> --}}
+
+</main>

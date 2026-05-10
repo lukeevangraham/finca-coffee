@@ -1,27 +1,23 @@
-<section class="section-features">
-  {{!-- Section Heading --}}
-  <div class="u-center-text u-margin-bottom-big">
-    <h2 class="heading-secondary">{{Heading}}</h2>
-  </div>
+<section class='features'>
+  <div class='features__container'>
 
-  {{!-- Loop through the features --}}
-  {{#each ImageBesideText}}
-    <div class="section-features__row">
-      
-      {{!-- Image Column --}}
-      <div class="section-features__image-box">
-        {{#if image.data}}
-          <img src="{{image.data.attributes.url}}" 
-               alt="{{#if image.data.attributes.alternativeText}}{{image.data.attributes.alternativeText}}{{else}}Finca Coffee Feature{{/if}}" 
-               class="section-features__img">
-        {{/if}}
+    {{#if Heading}}
+      <div class='u-center-text u-margin-bottom-big'>
+        <h2 class='heading-secondary'>{{Heading}}</h2>
       </div>
+    {{/if}}
 
-      {{!-- Text Column (Quill HTML) --}}
-      <div class="section-features__text-box">
-        {{{text}}}
-      </div>
-
+    {{! This class name must match the SCSS exactly }}
+    <div class='features__list'>
+      {{#each Column}}
+        <div class='features__item'>
+          <h3 class='features__title'>{{Title}}</h3>
+          <div class='features__description'>
+            {{{Description}}}
+          </div>
+        </div>
+      {{/each}}
     </div>
-  {{/each}}
+
+  </div>
 </section>

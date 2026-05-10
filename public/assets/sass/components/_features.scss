@@ -1,62 +1,59 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
-.section-features {
-  padding: 10rem 0;
+.features {
+  // background-color is handled by your automated zebra-striping in main
 
-  h2 {
-    text-align: center;
+  &__container {
+    max-width: variables.$grid-width;
+    margin: 0 auto;
+    padding: 0 3rem;
   }
 
-  &__row {
-    display: flex;
-    align-items: center;
-    gap: 8rem;
-    max-width: 114rem;
-    margin: 0 auto 12rem auto;
+  &__list {
+    display: grid;
+    // Two columns on desktop
+    grid-template-columns: 1fr 1fr;
+    column-gap: 8rem;
+    row-gap: 5rem;
 
-    // This flips the image and text for rows 2, 4, etc.
-    &:nth-child(even) {
-      flex-direction: row-reverse;
+    // One column on tablet and phone
+    @include mixins.respond(tab-port) {
+      grid-template-columns: 1fr;
+      row-gap: 4rem;
     }
   }
 
-  &__image-box,
-  &__text-box {
-    flex: 1;
-    ul {
-      list-style: none; // We'll create custom bullets for better control
-      margin-top: 2.5rem;
-    }
-
-    li {
-      font-size: 1.6rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-
-      // 1. Create space for the bullet
-      position: relative;
-      padding-left: 2.5rem;
-
-      // 2. Add the custom bullet
-      &::before {
-        content: '\2022'; // Standard bullet (or use \2014 for a long dash)
-        color: variables.$color-ternary; // Use your Finca brand color
-        font-weight: bold;
-        display: inline-block;
-
-        // 3. Position it absolutely so it doesn't affect text flow
-        position: absolute;
-        left: 0;
-        top: 0;
-      }
-    }
+  &__item {
+    border-top: 1px solid rgba(variables.$color-ternary, 0.3);
+    padding-top: 2rem;
   }
 
-  &__img {
-    width: 100%;
-    display: block;
-    border-radius: 5px;
-    box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.1);
+  &__title {
+    font-family: variables.$font-display; // Merriweather
+    font-size: 2rem;
+    font-weight: 700;
+    color: variables.$color-primary; // Espresso
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &__description {
+    font-family: variables.$font-main; // Open Sans
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: variables.$color-secondary;
+
+    // Handles the <p> tags coming from Strapi Rich Text
+    p {
+      margin: 0;
+    }
+
+    // Styles the bolded flavor notes
+    strong {
+      color: variables.$color-primary;
+      font-weight: 700;
+    }
   }
 }

@@ -3,7 +3,7 @@
 
 .rich-text {
   padding: 12rem 0; // Large vertical breathing room
-  background-color: variables.$color-white; // Using your #eee
+  // background-color: variables.$color-white; // Using your #eee
 
   &__container {
     max-width: 80rem; // Narrower than the grid for better reading lines
@@ -12,7 +12,7 @@
   }
 
   &__heading {
-    font-size: 4rem;
+    // font-size: 4rem;
     color: variables.$color-primary;
     margin-bottom: 6rem;
     text-align: center;

@@ -1,5 +1,5 @@
-@use "../abstracts/variables";
-@use "../abstracts/mixins";
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
 
 *,
 *::after,
@@ -31,4 +31,18 @@ html {
 body {
   box-sizing: border-box;
   font-size: variables.$default-font-size;
+
+  main {
+    // Target all sections EXCEPT the hero
+    section:not(.hero) {
+      padding: 15rem 0;
+      background-color: variables.$color-white;
+    }
+
+    // Zebra stripe only the non-hero sections
+    // This looks for even-numbered sections among the children of main
+    section:nth-of-type(even) {
+      background-color: variables.$color-quaternary; // Crema
+    }
+  }
 }
