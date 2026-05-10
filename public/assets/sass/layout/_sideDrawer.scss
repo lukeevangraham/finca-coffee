@@ -32,6 +32,39 @@
     color: variables.$color-primary;
     margin-bottom: 4rem;
   }
+
+  nav {
+    ul {
+      list-style: none; // Removes the bullets
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column; // Stack them vertically
+      gap: 2rem; // Space between items
+    }
+
+    li {
+      border-bottom: 1px solid rgba(variables.$color-ternary, 0.2);
+      padding-bottom: 1.5rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-family: variables.$font-main;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: variables.$color-primary; // Espresso
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      transition: all 0.2s;
+
+      &:hover {
+        color: variables.$color-ternary; // Almond
+        padding-left: 1rem; // Subtle "slide" effect on hover
+      }
+    }
+  }
 }
 
 // The dimming effect for the rest of the page

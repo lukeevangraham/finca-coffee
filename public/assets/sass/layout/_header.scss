@@ -10,6 +10,15 @@
 
   & > :first-child {
     flex-grow: 1;
+    text-decoration: none;
+    font-family: variables.$font-display;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: variables.$color-primary;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap; // Prevents the text from breaking into two lines
+    min-width: max-content; // Ensures it takes up exactly the space it needs
   }
 
   nav {
@@ -17,10 +26,52 @@
       display: flex;
       justify-content: flex-end;
       gap: 4rem;
+      list-style: none; // Strip those bullets here too!
+      margin: 0;
+      padding: 0;
+    }
 
-      li {
-        list-style: none;
+    li {
+      display: inline-block;
+    }
+
+    a {
+      text-decoration: none;
+      font-family: variables.$font-main;
+      font-size: 1.4rem; // Slightly smaller than mobile to keep it sleek
+      font-weight: 600;
+      color: variables.$color-primary;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s;
+      position: relative; // For the hover underline effect
+
+      &:hover {
+        color: variables.$color-ternary;
       }
+
+      // Instead of the "slide" on mobile, let's do a classic "Rustic" underline
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: variables.$color-ternary;
+        transition: width 0.3s;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+
+  // Ensure this only shows on desktop
+  .desktop-only {
+    @include mixins.respond(tab-port) {
+      display: none;
     }
   }
 
