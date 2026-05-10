@@ -1,16 +1,51 @@
-@use "../abstracts/mixins";
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
 
 .SideDrawer {
-  background-color: orangered;
   position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
+  width: 30rem;
   max-width: 70%;
-  display: none;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  z-index: 200; // Above everything
+  background-color: variables.$color-white;
+  padding: 3rem;
+  box-sizing: border-box;
+
+  // Slide out logic
   transition: transform 0.3s ease-out;
+  transform: translateX(100%); // Hidden by default
+
+  &.open {
+    transform: translateX(0);
+    box-shadow: -5px 0 15px rgba(variables.$color-black, 0.1);
+  }
 
   @include mixins.respond(tab-port) {
+    // Only displayed on mobile/tablet
+  }
+
+  &__logo {
+    font-family: variables.$font-display;
+    font-size: 2.5rem;
+    color: variables.$color-primary;
+    margin-bottom: 4rem;
+  }
+}
+
+// The dimming effect for the rest of the page
+.Backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  background-color: rgba(variables.$color-black, 0.5);
+  display: none; // Hidden by default
+
+  &.show {
     display: block;
   }
 }

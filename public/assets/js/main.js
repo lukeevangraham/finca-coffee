@@ -1,4 +1,20 @@
-console.log("Hello, World! This is the main.js file.");
+const drawerToggle = document.querySelector('.header__drawer-toggle');
+const sideDrawer = document.querySelector('#side-drawer');
+const backdrop = document.querySelector('#backdrop');
 
-// You can add your JavaScript code here to enhance the functionality of your website.
-// For example, you can add event listeners, manipulate the DOM, or make API calls.
+function toggleDrawer() {
+  sideDrawer.classList.toggle('open');
+  backdrop.classList.toggle('show');
+}
+
+// Open drawer on toggle click
+drawerToggle.addEventListener('click', toggleDrawer);
+
+// Close drawer when clicking the backdrop
+backdrop.addEventListener('click', toggleDrawer);
+
+// Close drawer when clicking a link (optional, but good for UX)
+const navLinks = document.querySelectorAll('.SideDrawer a');
+navLinks.forEach((link) => {
+  link.addEventListener('click', toggleDrawer);
+});

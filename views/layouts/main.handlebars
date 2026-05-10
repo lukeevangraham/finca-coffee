@@ -26,9 +26,14 @@
       </div>
     </section>
       
-      <div class="SideDrawer">
-        <div>Side Drawer</div>
-      </div>
+<div class="Backdrop" id="backdrop"></div>
+      
+    <div class="SideDrawer" id="side-drawer">
+      <div class="SideDrawer__logo">Finca Coffee</div>
+      <nav>
+        {{> nav/nav-items }} {{!-- Reuse your nav items --}}
+      </nav>
+    </div>
 
     {{{body}}}
 
