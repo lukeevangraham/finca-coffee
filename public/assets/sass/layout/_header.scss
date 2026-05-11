@@ -17,16 +17,17 @@
     color: variables.$color-primary;
     text-transform: uppercase;
     letter-spacing: 1px;
-    white-space: nowrap; // Prevents the text from breaking into two lines
-    min-width: max-content; // Ensures it takes up exactly the space it needs
+    white-space: nowrap;
+    min-width: max-content;
   }
 
   nav {
     ul {
       display: flex;
       justify-content: flex-end;
+      align-items: center; // CRITICAL: Keeps button and text links aligned
       gap: 4rem;
-      list-style: none; // Strip those bullets here too!
+      list-style: none;
       margin: 0;
       padding: 0;
     }
@@ -35,22 +36,22 @@
       display: inline-block;
     }
 
-    a {
+    // Target links that are NOT buttons for the underline effect
+    a:not(.btn) {
       text-decoration: none;
       font-family: variables.$font-main;
-      font-size: 1.4rem; // Slightly smaller than mobile to keep it sleek
+      font-size: 1.4rem;
       font-weight: 600;
       color: variables.$color-primary;
       text-transform: uppercase;
       letter-spacing: 2px;
       transition: all 0.3s;
-      position: relative; // For the hover underline effect
+      position: relative;
 
       &:hover {
         color: variables.$color-ternary;
       }
 
-      // Instead of the "slide" on mobile, let's do a classic "Rustic" underline
       &::after {
         content: '';
         position: absolute;
@@ -66,9 +67,17 @@
         width: 100%;
       }
     }
+
+    // Style the button specifically within the nav if needed
+    .btn {
+      // The .btn class from your partial will handle most of this,
+      // but we ensure it doesn't have the underline.
+      &::after {
+        display: none;
+      }
+    }
   }
 
-  // Ensure this only shows on desktop
   .desktop-only {
     @include mixins.respond(tab-port) {
       display: none;
@@ -76,6 +85,7 @@
   }
 
   &__drawer-toggle {
+    // ... (Your existing toggle code stays the same) ...
     background-color: rgba(variables.$color-black, 0.5);
     border-radius: 100%;
     width: 40px;

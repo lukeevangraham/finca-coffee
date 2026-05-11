@@ -1,0 +1,64 @@
+@use '../abstracts/variables';
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 0.5rem; // Subtle rounded corners for a boutique feel
+    transition: all 0.2s;
+    position: relative;
+    font-size: variables.$default-font-size;
+    font-family: variables.$font-main;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+      // Adds a subtle "glow" using your brand's Almond color instead of the default blue
+      box-shadow: 0 0 0 3px rgba(variables.$color-ternary, 0.5);
+    }
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(variables.$color-black, 0.2);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(variables.$color-black, 0.2);
+  }
+
+  &--primary {
+    background-color: variables.$color-primary; // Espresso
+    color: variables.$color-white; // Soft Linen
+  }
+
+  // This is the "fade-in-up" animation often used in boutique sites
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+
+  &--small {
+    padding: 0.8rem 2rem !important; // More compact for headers
+    font-size: 1.3rem !important;
+    letter-spacing: 1px;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

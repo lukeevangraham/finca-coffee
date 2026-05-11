@@ -24,16 +24,18 @@
     {{> sections/testimonials this}}
   {{/if}}
 
-  {{!-- {{#if (eq __component "section.heading-above-image-and-text")}}
-    {{> sections/features this}}
-  {{/if}} --}}
-
   {{#if (eq __component "section.heading-above-grid")}}
     {{> sections/features this}}
   {{/if}}
 
+  {{#if (eq __component "section.fa-qs")}}
+    {{> sections/faq this}}
+  {{/if}}
+
   {{!-- Add other sections here --}}
 {{/each}}
+
+{{> sections/cta }}
 
   {{!-- </div> --}}
 {{!-- </div> --}}

@@ -1,0 +1,21 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.section-cta {
+  padding: 15rem 0;
+  // Using your Crema variable here
+  background-color: variables.$color-quaternary;
+  text-align: center;
+}
+
+.cta {
+  &__text {
+    font-size: 2rem;
+    font-family: variables.$font-main;
+    // Using Roasted Bean for text readability
+    color: variables.$color-secondary;
+    max-width: 65rem;
+    margin: 0 auto 4rem auto;
+    line-height: 1.8;
+  }
+}

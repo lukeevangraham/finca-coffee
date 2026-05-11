@@ -1,0 +1,26 @@
+<section class='faq'>
+  <div class='row'>
+
+    {{#if Heading}}
+      <div class='u-center-text u-margin-bottom-big'>
+        <h2 class='heading-secondary'>{{Heading}}</h2>
+      </div>
+    {{/if}}
+
+    <div class='faq__accordion'>
+      {{#each QandA}}
+        <details class='faq__item'>
+          <summary class='faq__question'>
+            {{Question}}
+            <span class='faq__icon'></span>
+            {{! This replaces the triangle }}
+          </summary>
+          <div class='faq__answer'>
+            {{{Answer}}}
+          </div>
+        </details>
+      {{/each}}
+    </div>
+
+  </div>
+</section>
