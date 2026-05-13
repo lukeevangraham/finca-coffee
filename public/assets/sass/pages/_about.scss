@@ -1,0 +1,92 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.about {
+  padding: 15rem 0;
+  background-color: variables.$color-white; // Soft Linen provides a warm base
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12rem; // Increased gap for a more "luxurious" editorial feel
+    align-items: center;
+
+    @include mixins.respond(tab-port) {
+      grid-template-columns: 1fr;
+      gap: 6rem;
+      text-align: center;
+    }
+  }
+
+  &__image-box {
+    position: relative;
+
+    // The "Almond" Accent Frame
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3rem;
+      left: 3rem;
+      width: 100%;
+      height: 100%;
+      border: 2px solid variables.$color-ternary;
+      z-index: 1;
+
+      @include mixins.respond(tab-port) {
+        display: none; // Cleaner on mobile
+      }
+    }
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 2;
+    // Using a soft shadow that feels natural
+    box-shadow: 0 2rem 4rem rgba(variables.$color-primary, 0.15);
+  }
+
+  &__content {
+    h2 {
+      font-family: variables.$font-display;
+      font-size: 4.5rem;
+      font-weight: variables.$weight-black;
+      color: variables.$color-primary; // Espresso
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-family: variables.$font-main;
+      font-size: 2.2rem;
+      font-weight: variables.$weight-regular;
+      color: variables.$color-secondary; // Warm Latte
+      margin-bottom: 3.5rem;
+      line-height: 1.4;
+    }
+
+    p {
+      font-family: variables.$font-main;
+      font-size: variables.$default-font-size;
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      color: variables.$color-black; // Soft Charcoal for readability
+    }
+
+    strong {
+      color: variables.$color-primary;
+      font-weight: variables.$weight-bold;
+    }
+
+    // Target the center-aligned text from Strapi
+    .ql-align-center {
+      text-align: center;
+      margin-top: 5rem;
+      font-family: variables.$font-display;
+      color: variables.$color-secondary;
+      border-top: 1px solid variables.$color-quaternary;
+      padding-top: 3rem;
+    }
+  }
+}

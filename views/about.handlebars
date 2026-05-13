@@ -1,0 +1,46 @@
+<main>
+
+  {{log about}}
+
+  <section class='about'>
+    <div class='row'>
+      <div class='about__container'>
+        {{! Image Side }}
+        <div class='about__image-box'>
+          <img
+            src='{{about.Finca_story_image.data.attributes.url}}'
+            srcset='
+            {{getCloudinaryResize
+              about.Finca_story_image.data.attributes.url
+              400
+            }},
+            {{getCloudinaryResize
+              about.Finca_story_image.data.attributes.url
+              800
+            }},
+            {{getCloudinaryResize
+              about.Finca_story_image.data.attributes.url
+              1200
+            }}
+        '
+            sizes='(max-width: 600px) 100vw, 50vw'
+            alt='Kassandra - Founder of Finca Coffee'
+            class='about__img'
+            loading='lazy'
+            {{! Since this is below the fold or a secondary page, lazy load is great }}
+          />
+        </div>
+
+        {{! Text Side }}
+        <div class='about__content'>
+          {{! Use triple curly braces to render the HTML from Strapi }}
+          {{{about.Bio_content}}}
+
+          <div class='about__cta'>
+            <a href='/inquire' class='btn btn--primary'>Work with Finca</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

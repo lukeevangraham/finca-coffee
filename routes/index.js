@@ -3,11 +3,11 @@ const axios = require('axios');
 
 let aboutRoutes = require('./about');
 let menuRoutes = require('./menu');
-let bookRoutes = require('./menu');
+let inquireRoutes = require('./inquire');
 
 router.use('/about', aboutRoutes);
 router.use('/menu', menuRoutes);
-router.use('/book', bookRoutes);
+router.use('/inquire', inquireRoutes);
 
 router.get('/', async (req, res) => {
   const response = await Promise.all([
@@ -18,10 +18,6 @@ router.get('/', async (req, res) => {
 
   // console.log("RES: ", response[0].data.data.attributes.Sections);
   res.render('index', { sections: response[0].data.data.attributes.Sections });
-});
-
-router.get('/about', (req, res) => {
-  res.render('about');
 });
 
 module.exports = router;

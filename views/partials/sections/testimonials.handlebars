@@ -19,14 +19,20 @@
           <div class='testimonials__user-box'>
             <div class='testimonials__avatar-box'>
               <img
+                {{! Set a small base src, and provide srcset for retina displays }}
                 src='{{Photo.data.attributes.url}}'
+                srcset='
+                    {{getCloudinaryResize Photo.data.attributes.url 100}},
+                    {{getCloudinaryResize Photo.data.attributes.url 200}}
+                '
+                sizes='100px'
                 alt='{{FirstName}} {{LastName}}'
                 class='testimonials__avatar'
+                loading='lazy'
               />
             </div>
             <div class='testimonials__author'>
-              <span class='testimonials__author-name'>{{FirstName}}
-              </span>
+              <span class='testimonials__author-name'>{{FirstName}}</span>
               <span class='testimonials__author-description'>{{LastName}}</span>
             </div>
           </div>
