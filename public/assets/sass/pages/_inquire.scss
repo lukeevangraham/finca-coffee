@@ -191,3 +191,10 @@
     transform: translateY(-3px);
   }
 }
+
+.form__hp {
+  position: absolute;
+  left: -9999px; // Move it off-screen
+  display: none !important; // Just to be safe
+  visibility: hidden;
+}
