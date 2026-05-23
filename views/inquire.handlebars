@@ -1,8 +1,178 @@
 <main>
 
-  <section>
+  <section class='section-inquire'>
     <div class='row'>
-      <h1>Inquire</h1>
+      <div class='inquire'>
+
+        {{! Header Section }}
+        <div class='inquire__header u-margin-bottom-medium'>
+          <h1 class='heading-primary'>Inquire</h1>
+          <p class='inquire__sub-text'>
+            Tell us about your vision, and let’s craft a coffee experience your
+            guests will never forget.
+          </p>
+        </div>
+
+        {{! The Form }}
+        <form id='inquiry-form' class='form'>
+          <div class='form__container'>
+
+            {{! Row 1: The Basics }}
+            <div class='form__row'>
+              <div class='form__group'>
+                <input
+                  type='text'
+                  name='name'
+                  class='form__input'
+                  placeholder='Full Name'
+                  id='name'
+                  required
+                />
+                <label for='name' class='form__label'>Full Name</label>
+              </div>
+              <div class='form__group'>
+                <input
+                  type='email'
+                  name='email'
+                  class='form__input'
+                  placeholder='Email Address'
+                  id='email'
+                  required
+                />
+                <label for='email' class='form__label'>Email Address</label>
+              </div>
+            </div>
+
+            {{! Row 2: Logistics }}
+            <div class='form__row'>
+              <div class='form__group'>
+                <input
+                  type='date'
+                  name='event_date'
+                  class='form__input'
+                  id='date'
+                  required
+                />
+                <label for='date' class='form__label'>Event Date</label>
+              </div>
+              <div class='form__group'>
+                <input
+                  type='number'
+                  name='guest_count'
+                  class='form__input'
+                  placeholder='Approx. Guests'
+                  id='guests'
+                  required
+                />
+                <label for='guests' class='form__label'>Approx. Guests</label>
+              </div>
+            </div>
+
+            {{! Location Field }}
+            <div class='form__group'>
+              <input
+                type='text'
+                name='location'
+                class='form__input'
+                placeholder='Venue or City'
+                id='location'
+                required
+              />
+              <label for='location' class='form__label'>Venue or City</label>
+            </div>
+
+            {{! The Add-ons Grid (Kassandra's Request) }}
+            <div class='form__add-ons u-margin-top-small'>
+              <h3 class='heading-tertiary u-margin-bottom-small'>Elevate Your
+                Event</h3>
+              <div class='form__checkbox-grid'>
+                <div class='form__checkbox-group'>
+                  <input
+                    type='checkbox'
+                    name='addons'
+                    value='Cart Branding'
+                    id='branding'
+                  />
+                  <label for='branding'>Custom Cart Branding</label>
+                </div>
+                <div class='form__checkbox-group'>
+                  <input
+                    type='checkbox'
+                    name='addons'
+                    value='Branded Cups'
+                    id='cups'
+                  />
+                  <label for='cups'>Branded Cups & Sleeves</label>
+                </div>
+                <div class='form__checkbox-group'>
+                  <input
+                    type='checkbox'
+                    name='addons'
+                    value='Matcha & Drip'
+                    id='matcha'
+                  />
+                  <label for='matcha'>Matcha & Drip Coffee</label>
+                </div>
+                <div class='form__checkbox-group'>
+                  <input
+                    type='checkbox'
+                    name='addons'
+                    value='Custom Menu'
+                    id='custom-menu'
+                  />
+                  <label for='custom-menu'>Custom Drink Menu</label>
+                </div>
+              </div>
+            </div>
+
+            {{! Message }}
+            <div class='form__group u-margin-top-small'>
+              <textarea
+                name='message'
+                class='form__input'
+                placeholder='Tell us more about your event...'
+                id='message'
+                rows='4'
+              ></textarea>
+              <label for='message' class='form__label'>Anything else we should
+                know?</label>
+            </div>
+
+            {{! Pricing Transparency Anchor }}
+            <div class='form__pricing-note'>
+              <p class='form__pricing-text'>
+                <span class='form__pricing-label'>Investment:</span>
+                Event packages start at
+                <strong>$500</strong>.
+              </p>
+              <p class='form__pricing-subtext'>
+                Final quotes are tailored based on guest count, duration, and
+                selected add-ons.
+              </p>
+            </div>
+
+            {{! Submit }}
+            <div class='u-margin-top-medium'>
+              <button
+                type='submit'
+                class='btn btn--primary'
+                id='submit-btn'
+              >Request Consultation &rarr;</button>
+            </div>
+
+          </div>
+        </form>
+
+        {{! Success Message starts hidden }}
+        <div id='success-message' class='success-message u-hidden'>
+          <h2>Talk soon!</h2>
+          <p>Your inquiry was sent. Kassandra will reach out within 24 hours.</p>
+        </div>
+
+      </div>
     </div>
   </section>
+
 </main>
+
+<script src='/assets/js/inquire.js'></script>

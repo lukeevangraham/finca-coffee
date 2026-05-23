@@ -1,5 +1,5 @@
-@use "../abstracts/mixins";
-@use "../abstracts/variables";
+@use '../abstracts/mixins';
+@use '../abstracts/variables';
 
 .row {
   max-width: variables.$grid-width;
@@ -19,5 +19,47 @@
   width: 100%;
   @include mixins.respond(tab-port) {
     display: none;
+  }
+}
+
+.u-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0;
+}
+
+.u-fade-in {
+  animation: fadeIn BoutiqueLift 0.8s ease-out forwards;
+}
+
+@keyframes BoutiqueLift {
+  0% {
+    opacity: 0;
+    transform: translateY(2rem); // Starts slightly lower
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); // Slides up to its natural position
+  }
+}
+
+// Success message styling to ensure it looks great
+.success-message {
+  text-align: center;
+  padding: 4rem;
+  background-color: variables.$color-white;
+  border: 1px solid variables.$color-quaternary;
+
+  h2 {
+    font-family: variables.$font-display;
+    color: variables.$color-primary;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+  }
+
+  p {
+    font-family: variables.$font-main;
+    color: variables.$color-secondary;
+    font-size: 1.8rem;
   }
 }

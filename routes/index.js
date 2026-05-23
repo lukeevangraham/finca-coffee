@@ -4,10 +4,12 @@ const axios = require('axios');
 let aboutRoutes = require('./about');
 let menuRoutes = require('./menu');
 let inquireRoutes = require('./inquire');
+let apiInquiryRoutes = require('./api/inquiry');
 
 router.use('/about', aboutRoutes);
 router.use('/menu', menuRoutes);
 router.use('/inquire', inquireRoutes);
+router.use('/api/inquiry', apiInquiryRoutes);
 
 router.get('/', async (req, res) => {
   const response = await Promise.all([

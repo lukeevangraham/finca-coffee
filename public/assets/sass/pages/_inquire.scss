@@ -1,0 +1,193 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.section-inquire {
+  padding: 10rem 0;
+  background-color: variables.$color-white; // Soft Linen
+}
+
+.inquire {
+  max-width: variables.$grid-width;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 5rem;
+
+    h1 {
+      font-family: variables.$font-display;
+      color: variables.$color-primary;
+      font-weight: variables.$weight-black;
+      font-size: 4rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__sub-text {
+    font-family: variables.$font-main;
+    font-size: 1.8rem;
+    color: variables.$color-secondary;
+    margin-top: 1rem;
+  }
+}
+
+.form {
+  &__container {
+    background-color: #fff;
+    padding: 6rem;
+    border-radius: 2px;
+    border: 1px solid variables.$color-quaternary;
+    box-shadow: 0 1.5rem 4rem rgba(variables.$color-primary, 0.05);
+
+    @media (max-width: 600px) {
+      padding: 3rem;
+    }
+  }
+
+  &__row {
+    display: flex;
+    gap: 3rem;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__group {
+    margin-bottom: 2.5rem;
+    position: relative;
+    flex: 1;
+  }
+
+  &__input {
+    font-family: variables.$font-main;
+    font-size: variables.$default-font-size;
+    color: variables.$color-black;
+    padding: 1.5rem 2rem;
+    background-color: variables.$color-white;
+    border: 1px solid variables.$color-quaternary;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid variables.$color-secondary; // Warm Latte accent
+      box-shadow: 0 1rem 2rem rgba(variables.$color-primary, 0.05);
+
+      &:invalid {
+        border-bottom: 3px solid #d9534f; // Subtle error red
+      }
+    }
+
+    // Floating Label Logic
+    &:placeholder-shown + .form__label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4.5rem);
+    }
+  }
+
+  &__label {
+    font-family: variables.$font-main;
+    font-size: 1.2rem;
+    font-weight: variables.$weight-bold;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+    color: variables.$color-ternary; // Muted brown for the label
+  }
+
+  &__add-ons {
+    background-color: variables.$color-quaternary; // Crema background for the "Extras" section
+    padding: 4rem;
+    margin: 4rem 0;
+    border-radius: 2px;
+
+    h3 {
+      font-family: variables.$font-display;
+      color: variables.$color-primary;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+    gap: 2rem;
+  }
+
+  &__checkbox-group {
+    display: flex;
+    align-items: center;
+    font-family: variables.$font-main;
+    font-size: 1.5rem;
+    color: variables.$color-primary;
+    cursor: pointer;
+
+    input {
+      accent-color: variables.$color-secondary;
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
+  &__pricing-note {
+    margin: 3rem 0;
+    padding: 2rem;
+    border-left: 3px solid variables.$color-ternary; // Toasted Almond accent
+    background-color: variables.$color-white; // Soft Linen
+  }
+
+  &__pricing-text {
+    font-family: variables.$font-main;
+    font-size: 1.8rem;
+    color: variables.$color-primary;
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: variables.$color-secondary; // Latte brown for the price
+      font-size: 2.2rem;
+    }
+  }
+
+  &__pricing-label {
+    text-transform: uppercase;
+    font-weight: variables.$weight-bold;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    display: block;
+    color: variables.$color-ternary;
+    margin-bottom: 0.5rem;
+  }
+
+  &__pricing-subtext {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: variables.$color-secondary;
+  }
+}
+
+.btn--primary {
+  background-color: variables.$color-primary;
+  color: variables.$color-white;
+  padding: 1.5rem 4rem;
+  font-family: variables.$font-main;
+  font-weight: variables.$weight-bold;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: variables.$color-secondary;
+    transform: translateY(-3px);
+  }
+}
