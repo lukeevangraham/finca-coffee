@@ -8,7 +8,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
+
+{{!-- Dynamically set the title and description --}}
+    <title>{{#if metaTitle}}{{metaTitle}}{{else}}Finca Coffee | Boutique Mobile Coffee Cart{{/if}}</title>
+    <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Elevate your Nebraska events with Finca Coffee's boutique mobile espresso bar. Starting at $650.{{/if}}">
+
+
     <link rel="stylesheet" href="../assets/css/style.css" />
+    
   </head>
   <body>
 

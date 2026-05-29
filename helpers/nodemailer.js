@@ -18,8 +18,15 @@ const transporter = nodemailer.createTransport({
  * @param {Object} data - The form data object
  */
 const sendInquiryEmail = async (data) => {
-  const { name, email, event_date, guest_count, location, addons, message } =
-    data;
+  const {
+    name,
+    email,
+    event_date,
+    guest_count,
+    location,
+    addons = [],
+    message,
+  } = data;
 
   const mailOptions = {
     from: `"Finca Website" <${process.env.EMAIL_USER}>`,
@@ -27,15 +34,17 @@ const sendInquiryEmail = async (data) => {
     replyTo: email,
     subject: `☕ New Inquiry: ${name} - ${event_date}`,
     html: `
-            <div style="font-family: sans-serif; max-width: 600px; color: #2c1b12; border: 1px solid #ede0d4; padding: 20px;">
-                <h2 style="color: #5f4339;">New Event Inquiry</h2>
-                <p><strong>Customer:</strong> ${name}</p>
-                <p><strong>Date:</strong> ${event_date}</p>
-                <p><strong>Venue:</strong> ${location}</p>
-                <p><strong>Add-ons:</strong> ${addons.length > 0 ? addons.join(', ') : 'None'}</p>
-                <p><strong>Message:</strong> ${message}</p>
-            </div>
-        `,
+        <div style="font-family: sans-serif; max-width: 600px; color: #2c1b12; border: 1px solid #ede0d4; padding: 20px;">
+            <h2 style="color: #5f4339;">New Event Inquiry</h2>
+            <p><strong>Customer:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p> {{!-- Good to have this visible in the body too --}}
+            <p><strong>Date:</strong> ${event_date}</p>
+            <p><strong>Guests:</strong> ${guest_count}</p> {{!-- Added this since it was in your destructuring --}}
+            <p><strong>Venue:</strong> ${location}</p>
+            <p><strong>Add-ons:</strong> ${addons.length > 0 ? addons.join(', ') : 'None'}</p>
+            <p><strong>Message:</strong> ${message}</p>
+        </div>
+    `,
   };
 
   return transporter.sendMail(mailOptions);

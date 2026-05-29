@@ -86,6 +86,19 @@
               <h3 class='heading-tertiary u-margin-bottom-small'>Elevate Your
                 Event</h3>
               <div class='form__checkbox-grid'>
+                {{#each inquire.AddOns}}
+                  <div class='form__checkbox-group'>
+                    <input
+                      type='checkbox'
+                      name='addons'
+                      value='{{this.Title}}'
+                      id='addon-{{@index}}'
+                    />
+                    <label for='addon-{{@index}}'>{{this.Title}}</label>
+                  </div>
+                {{/each}}
+              </div>
+              {{! <div class='form__checkbox-grid'>
                 <div class='form__checkbox-group'>
                   <input
                     type='checkbox'
@@ -122,7 +135,7 @@
                   />
                   <label for='custom-menu'>Custom Drink Menu</label>
                 </div>
-              </div>
+              </div> }}
             </div>
 
             {{! Message }}
@@ -151,8 +164,9 @@
             <div class='form__pricing-note'>
               <p class='form__pricing-text'>
                 <span class='form__pricing-label'>Investment:</span>
-                Event packages start at
-                <strong>$650</strong>.
+                {{inquire.RateDisclaimer}}
+                <strong>${{inquire.StartingRate}}</strong>
+                ({{inquire.MinimumHours}}).
               </p>
               <p class='form__pricing-subtext'>
                 Final quotes are tailored based on guest count, duration, and
