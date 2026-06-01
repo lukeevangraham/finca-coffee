@@ -1,8 +1,81 @@
-<main>
-
-  <section>
-    <div class='row'>
-      <h1>Menu</h1>
+<main class="menu-page">
+  <section class="section-menu">
+    <div class="row">
+      <div class="u-center-text u-margin-bottom-big">
+        <h1 class="heading-primary">Our Menu</h1>
+        <p class="menu-intro">Boutique coffee and handcrafted flavors curated for your event.</p>
+      </div>
     </div>
+
+    {{!-- Featured Items Section --}}
+    <div class="row">
+      <div class="menu-grid">
+        {{#each menuItems}}
+          {{#if attributes.Is_featured}}
+            <div class="menu-card {{#if attributes.Image.data}}menu-card--has-img{{else}}menu-card--text-only{{/if}}">
+              
+              {{#if attributes.Image.data}}
+                <div class="menu-card__img-box">
+                  <img src="{{attributes.Image.data.attributes.url}}" alt="{{attributes.Name}}" class="menu-card__img">
+                </div>
+              {{/if}}
+
+              <div class="menu-card__content">
+                <span class="menu-card__category">{{attributes.Category}}</span>
+                <h3 class="heading-tertiary">{{attributes.Name}}</h3>
+                <p class="menu-card__description">{{attributes.Description}}</p>
+                <span class="menu-card__price">From ${{attributes.Price_starting_at}}</span>
+              </div>
+            </div>
+          {{/if}}
+        {{/each}}
+      </div>
+    </div>
+
+    {{!-- Standard List Section --}}
+    <div class="row u-margin-top-huge">
+      <div class="menu-list">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">The Staples</h2>
+        </div>
+
+        <div class="menu-list__grid">
+          {{#each menuItems}}
+            {{#unless attributes.Is_featured}}
+              <div class="menu-list__item">
+                <div class="menu-list__header">
+                  <span class="menu-list__name">{{attributes.Name}}</span>
+                  <span class="menu-list__dots"></span>
+                  <span class="menu-list__price">${{attributes.Price_starting_at}}</span>
+                </div>
+                <p class="menu-list__desc">{{attributes.Description}}</p>
+              </div>
+            {{/unless}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- Reuse the CTA Section --}}
+    <section class='section-cta u-margin-top-huge'>
+      <div class='row'>
+        <div class='cta u-center-text'>
+            <h2 class='heading-secondary u-margin-bottom-small'>Ready to elevate your event?</h2>
+
+            <p class='cta__text u-margin-bottom-medium'>
+              Love our flavors? Let's bring them to your celebration. 
+              Inquire today to see if your date is available.
+            </p>
+            
+            {{!-- Same Button Partial for Consistency --}}
+            {{> UI/button 
+                link="/inquire" 
+                text="Inquire for Availability" 
+                style="primary" 
+                class="btn--animated"
+            }}
+        </div>
+      </div>
+    </section>
   </section>
 </main>

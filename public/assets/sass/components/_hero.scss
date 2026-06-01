@@ -74,6 +74,7 @@
     font-weight: 400; // Bumped to 400; 300 can "disappear" on mobile against bright backgrounds
     text-transform: uppercase;
     color: variables.$color-white;
+    margin-bottom: 2.5rem;
 
     /* SUBHEADING SHADOW: Softer and tighter to prevent smaller letters from looking "muddy" */
     text-shadow: 0 2px 4px rgba(variables.$color-primary, 0.6);

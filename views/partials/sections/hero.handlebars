@@ -18,6 +18,13 @@
     <div class='hero__content'>
       <h1 class='hero__headline'>{{headline}}</h1>
       <p class='hero__subheading'>{{subheading}}</p>
+      {{!-- Calling the button partial --}}
+        {{> UI/button 
+            link=Button.[0].url
+            text=Button.[0].text
+            style="primary" 
+            class="btn--animated"
+        }}
     </div>
   </div>
 </section>

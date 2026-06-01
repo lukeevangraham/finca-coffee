@@ -1,0 +1,119 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 4rem;
+
+  @include respond(phone) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.menu-card {
+  background-color: $color-white;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.05);
+  border: 1px solid $color-quaternary;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &--text-only {
+    padding: 4rem;
+    text-align: center;
+    justify-content: center;
+    background-color: $color-quaternary; // Using your Crema/Off-white
+    min-height: 40rem;
+
+    @include respond(tab-port) {
+      min-height: auto;
+    }
+  }
+
+  &__img-box {
+    height: 25rem;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  &__category {
+    font-family: $font-main;
+    font-weight: $weight-bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $color-ternary;
+    margin-bottom: 1rem;
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    color: $color-secondary;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  &__price {
+    margin-top: auto;
+    font-weight: $weight-bold;
+    color: $color-primary;
+    font-size: 1.8rem;
+  }
+}
+
+.menu-list {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 8rem;
+
+    @include respond(tab-port) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    margin-bottom: 2rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-weight: $weight-bold;
+    font-size: 2rem;
+    color: $color-primary;
+  }
+
+  &__dots {
+    flex: 1;
+    border-bottom: 1px dotted $color-ternary;
+    margin: 0 1rem;
+  }
+
+  &__price {
+    font-family: $font-main;
+    font-weight: $weight-medium;
+    color: $color-secondary;
+  }
+}
