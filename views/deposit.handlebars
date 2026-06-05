@@ -1,0 +1,44 @@
+<main>
+  <section class='section-payment'>
+    <div class='row'>
+      <div class='payment-container'>
+
+        {{! Header Section }}
+        <div class='payment-header'>
+          <h1 class='heading-primary'>Secure Your Date</h1>
+          <p class='payment-subtitle'>
+            Ready to make it official? Finalize your secure retainer deposit to
+            lock in Finca Coffee for your celebration.
+          </p>
+        </div>
+
+        {{! Main Interactive Layout Card }}
+        <div class='payment-card'>
+          <div class='payment-card__action-box'>
+            <a
+              href='{{stripeUrl}}'
+              target='_blank'
+              rel='noopener'
+              class='btn btn--primary'
+            >
+              Proceed to Secure Payment &rarr;
+            </a>
+          </div>
+
+          <div class='payment-card__trust-note'>
+            <p class='payment-card__trust-title'>
+              🔒 Payments are safely processed and encrypted securely via
+              Stripe.
+            </p>
+            <p class='payment-card__trust-text'>
+              Please note: Retainer deposits are non-refundable and are
+              allocated immediately toward date preservation, staffing
+              logistics, and artisan menu sourcing for your event.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>

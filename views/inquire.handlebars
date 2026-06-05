@@ -1,5 +1,4 @@
 <main>
-
   <section class='section-inquire'>
     <div class='row'>
       <div class='inquire'>
@@ -13,190 +12,62 @@
           </p>
         </div>
 
-        {{! The Form }}
-        <form id='inquiry-form' class='form'>
-          <div class='form__container'>
+        {{! 3-Step Process: Built as a plain flex block to fit your existing row grid bounds }}
+        <div
+          style='display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; margin: 4rem 0 6rem 0;'
+        >
 
-            {{! Row 1: The Basics }}
-            <div class='form__row'>
-              <div class='form__group'>
-                <input
-                  type='text'
-                  name='name'
-                  class='form__input'
-                  placeholder='Full Name'
-                  id='name'
-                  required
-                />
-                <label for='name' class='form__label'>Full Name</label>
-              </div>
-              <div class='form__group'>
-                <input
-                  type='email'
-                  name='email'
-                  class='form__input'
-                  placeholder='Email Address'
-                  id='email'
-                  required
-                />
-                <label for='email' class='form__label'>Email Address</label>
-              </div>
-            </div>
-
-            {{! Row 2: Logistics }}
-            <div class='form__row'>
-              <div class='form__group'>
-                <input
-                  type='date'
-                  name='event_date'
-                  class='form__input'
-                  id='date'
-                  required
-                />
-                <label for='date' class='form__label'>Event Date</label>
-              </div>
-              <div class='form__group'>
-                <input
-                  type='number'
-                  name='guest_count'
-                  class='form__input'
-                  placeholder='Approx. Guests'
-                  id='guests'
-                  required
-                />
-                <label for='guests' class='form__label'>Approx. Guests</label>
-              </div>
-            </div>
-
-            {{! Location Field }}
-            <div class='form__group'>
-              <input
-                type='text'
-                name='location'
-                class='form__input'
-                placeholder='Venue or City'
-                id='location'
-                required
-              />
-              <label for='location' class='form__label'>Venue or City</label>
-            </div>
-
-            {{! The Add-ons Grid (Kassandra's Request) }}
-            <div class='form__add-ons u-margin-top-small'>
-              <h3 class='heading-tertiary u-margin-bottom-small'>Elevate Your
-                Event</h3>
-              <div class='form__checkbox-grid'>
-                {{#each inquire.AddOns}}
-                  <div class='form__checkbox-group'>
-                    <input
-                      type='checkbox'
-                      name='addons'
-                      value='{{this.Title}}'
-                      id='addon-{{@index}}'
-                    />
-                    <label for='addon-{{@index}}'>{{this.Title}}</label>
-                  </div>
-                {{/each}}
-              </div>
-              {{! <div class='form__checkbox-grid'>
-                <div class='form__checkbox-group'>
-                  <input
-                    type='checkbox'
-                    name='addons'
-                    value='Cart Branding'
-                    id='branding'
-                  />
-                  <label for='branding'>Custom Cart Branding</label>
-                </div>
-                <div class='form__checkbox-group'>
-                  <input
-                    type='checkbox'
-                    name='addons'
-                    value='Branded Cups'
-                    id='cups'
-                  />
-                  <label for='cups'>Branded Cups & Sleeves</label>
-                </div>
-                <div class='form__checkbox-group'>
-                  <input
-                    type='checkbox'
-                    name='addons'
-                    value='Matcha & Drip'
-                    id='matcha'
-                  />
-                  <label for='matcha'>Matcha & Drip Coffee</label>
-                </div>
-                <div class='form__checkbox-group'>
-                  <input
-                    type='checkbox'
-                    name='addons'
-                    value='Custom Menu'
-                    id='custom-menu'
-                  />
-                  <label for='custom-menu'>Custom Drink Menu</label>
-                </div>
-              </div> }}
-            </div>
-
-            {{! Message }}
-            <div class='form__group u-margin-top-small'>
-              <textarea
-                name='message'
-                class='form__input'
-                placeholder='Tell us more about your event...'
-                id='message'
-                rows='4'
-              ></textarea>
-              <label for='message' class='form__label'>Anything else we should
-                know?</label>
-            </div>
-
-            <div class='form__hp'>
-              <input
-                type='text'
-                name='b_name'
-                tabindex='-1'
-                autocomplete='off'
-              />
-            </div>
-
-            {{! Pricing Transparency Anchor }}
-            <div class='form__pricing-note'>
-              <p class='form__pricing-text'>
-                <span class='form__pricing-label'>Investment:</span>
-                {{inquire.RateDisclaimer}}
-                <strong>${{inquire.StartingRate}}</strong>
-                ({{inquire.MinimumHours}}).
-              </p>
-              <p class='form__pricing-subtext'>
-                Final quotes are tailored based on guest count, duration, and
-                selected add-ons.
-              </p>
-            </div>
-
-            {{! Submit }}
-            <div class='u-margin-top-medium'>
-              <button
-                type='submit'
-                class='btn btn--primary'
-                id='submit-btn'
-              >Request Consultation &rarr;</button>
-            </div>
-
+          <div
+            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
+          >
+            <h3
+              class='heading-tertiary'
+              style='margin-bottom: 1rem; color: var(--color-ternary);'
+            >1. Inquire</h3>
+            <p
+              class='paragraph'
+              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
+            >Fill out our instant quote checker below with your event details.</p>
           </div>
 
-        </form>
+          <div
+            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
+          >
+            <h3
+              class='heading-tertiary'
+              style='margin-bottom: 1rem; color: var(--color-ternary);'
+            >2. Customize</h3>
+            <p
+              class='paragraph'
+              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
+            >Select your specialty drinks, custom add-ons, and cart aesthetic.</p>
+          </div>
 
-        {{! Success Message starts hidden }}
-        <div id='success-message' class='success-message u-hidden'>
-          <h2>Talk soon!</h2>
-          <p>Your inquiry was sent. Kassandra will reach out within 24 hours.</p>
+          <div
+            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
+          >
+            <h3
+              class='heading-tertiary'
+              style='margin-bottom: 1rem; color: var(--color-ternary);'
+            >3. Celebrate</h3>
+            <p
+              class='paragraph'
+              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
+            >We show up with our mobile cart, handle the logistics, and serve
+              your guests.</p>
+          </div>
+
+        </div>
+
+        {{! Flashquotes Dynamic Embed Container }}
+        <div class='inquire__form-container'>
+          <script
+            form-id='cmpnginwe0001l704m9chn53y'
+            src='https://app.flashquotes.com/embed.js'
+          ></script>
         </div>
 
       </div>
     </div>
   </section>
-
 </main>
-
-<script src='/assets/js/inquire.js'></script>

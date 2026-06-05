@@ -5,11 +5,13 @@ let aboutRoutes = require('./about');
 let menuRoutes = require('./menu');
 let inquireRoutes = require('./inquire');
 let apiInquiryRoutes = require('./api/inquiry');
+let depositRoutes = require('./deposit');
 
 router.use('/about', aboutRoutes);
 router.use('/menu', menuRoutes);
 router.use('/inquire', inquireRoutes);
 router.use('/api/inquiry', apiInquiryRoutes);
+router.use('/deposit', depositRoutes);
 
 router.get('/', async (req, res) => {
   const response = await Promise.all([

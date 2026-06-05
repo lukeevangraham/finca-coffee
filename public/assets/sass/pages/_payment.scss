@@ -1,0 +1,95 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+.section-payment {
+  padding: 12rem 0;
+  background-color: variables.$color-quaternary; // Crema texture backdrop
+
+  @include mixins.respond(phone) {
+    padding: 6rem 0; // Tighter vertical layout on small viewports
+  }
+}
+
+.payment-container {
+  max-width: 65rem;
+  margin: 0 auto;
+  padding: 0 2rem; // Essential safety gutter for mobile screens
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: 5rem;
+
+  h1 {
+    font-family: variables.$font-display;
+    color: variables.$color-primary;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+
+    @include mixins.respond(phone) {
+      font-size: 3.2rem; // Scales typography dynamically on phones
+    }
+  }
+}
+
+.payment-subtitle {
+  font-family: variables.$font-main;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: variables.$color-secondary;
+}
+
+.payment-card {
+  background-color: variables.$color-white;
+  padding: 5rem;
+  border-radius: 4px;
+  box-shadow: 0 1.5rem 4rem rgba(variables.$color-primary, 0.04);
+  text-align: center;
+  border: 1px solid rgba(variables.$color-ternary, 0.15);
+
+  @include mixins.respond(phone) {
+    padding: 4rem 2rem; // Recovers horizontal real estate inside the card
+  }
+
+  &__action-box {
+    margin: 2rem 0 5rem 0;
+
+    @include mixins.respond(phone) {
+      margin: 1rem 0 4rem 0;
+
+      // Forces the button component to stretch to standard full mobile layout
+      .btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem 0;
+      }
+    }
+  }
+
+  &__trust-note {
+    text-align: left;
+    padding: 2.5rem;
+    border-left: 3px solid variables.$color-ternary;
+    background-color: variables.$color-quaternary;
+
+    @include mixins.respond(phone) {
+      padding: 2rem 1.5rem; // Saves space inside the note box
+    }
+  }
+
+  &__trust-title {
+    font-family: variables.$font-main;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: variables.$color-primary;
+    margin-bottom: 0.8rem;
+  }
+
+  &__trust-text {
+    font-family: variables.$font-main;
+    font-size: 1.3rem;
+    color: variables.$color-secondary;
+    line-height: 1.6;
+  }
+}
