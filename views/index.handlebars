@@ -32,6 +32,10 @@
     {{> sections/faq this}}
   {{/if}}
 
+  {{#if (eq __component "section.collage")}}
+    {{> sections/collage this}}
+  {{/if}}
+
   {{!-- Add other sections here --}}
 {{/each}}
 

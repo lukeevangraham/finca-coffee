@@ -1,15 +1,6 @@
 @use '../abstracts/variables';
 @use '../abstracts/mixins';
 
-.section-inquire {
-  padding: 10rem 0;
-  background-color: variables.$color-white; // Soft Linen
-
-  @include mixins.respond(phone) {
-    padding: 6rem 0;
-  }
-}
-
 .inquire {
   max-width: variables.$grid-width;
   margin: 0 auto;
@@ -17,7 +8,7 @@
 
   &__header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 4rem; // FIXED: Replaced broken variable reference with 4rem
 
     h1 {
       font-family: variables.$font-display;
@@ -34,10 +25,10 @@
     margin-bottom: 2.5rem;
   }
 
-  // Dynamic Pill Banner (Filters out unqualified leads)
+  // Dynamic Pill Banner
   &__rate-badge {
     display: inline-block;
-    background-color: variables.$color-quaternary; // Crema
+    background-color: variables.$color-quaternary;
     padding: 1rem 2.5rem;
     border-radius: 10rem;
     margin-bottom: 1rem;
@@ -47,12 +38,12 @@
     font-family: variables.$font-main;
     font-size: 1.5rem;
     font-weight: variables.$weight-bold;
-    color: variables.$color-secondary; // Warm Latte
+    color: variables.$color-secondary;
     margin: 0;
   }
 
   &__rate-price {
-    color: variables.$color-primary; // Deep Espresso
+    color: variables.$color-primary;
     font-size: 1.8rem;
     font-weight: variables.$weight-black;
   }
@@ -63,7 +54,7 @@
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
-    margin: 3rem 0 6rem 0;
+    margin: 3rem 0 4rem 0; // FIXED: Replaced broken variable reference with 4rem
 
     @include mixins.respond(tab-port) {
       gap: 4rem;
@@ -93,7 +84,7 @@
     line-height: 1.6;
   }
 
-  // Styled to match the exact physical card dimensions of your original form
+  // Styled to match form boundaries
   &__form-container {
     max-width: 80rem;
     margin: 0 auto;
@@ -107,30 +98,11 @@
       padding: 3rem 1.5rem;
     }
 
-    // Forces Flashquotes scripts and inner iframes to scale responsively
     iframe,
     div[form-id] {
       width: 100% !important;
       max-width: 100% !important;
       margin: 0 auto;
     }
-  }
-}
-
-// Keeping your global primary button utility class compiled just in case
-.btn--primary {
-  background-color: variables.$color-primary;
-  color: variables.$color-white;
-  padding: 1.5rem 4rem;
-  font-family: variables.$font-main;
-  font-weight: variables.$weight-bold;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s;
-
-  &:hover {
-    background-color: variables.$color-secondary;
-    transform: translateY(-3px);
   }
 }

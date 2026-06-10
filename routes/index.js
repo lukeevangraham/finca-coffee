@@ -16,7 +16,7 @@ router.use('/deposit', depositRoutes);
 router.get('/', async (req, res) => {
   const response = await Promise.all([
     axios.get(
-      `${process.env.API_URL}fc-home?populate[Sections][on][section.hero][populate][mainImage]=*&populate[Sections][on][section.hero][populate][Button][populate]=*&populate[Sections][on][section.testimonies][populate][Testimony][populate][Photo]=*&populate[Sections][on][section.heading-above-columns][populate][Column][populate][Photo]=*&populate[Sections][on][section.heading-above-image-and-text][populate][ImageBesideText][populate]=*&populate[Sections][on][section.heading-above-rich-text][populate]=*&populate[Sections][on][section.heading-above-grid][populate][Column]=*&populate[Sections][on][section.fa-qs][populate][QandA]=*`,
+      `${process.env.API_URL}fc-home?populate[Sections][on][section.hero][populate][mainImage]=*&populate[Sections][on][section.hero][populate][Button][populate]=*&populate[Sections][on][section.testimonies][populate][Testimony][populate][Photo]=*&populate[Sections][on][section.heading-above-columns][populate][Column][populate][Photo]=*&populate[Sections][on][section.heading-above-image-and-text][populate][ImageBesideText][populate]=*&populate[Sections][on][section.heading-above-rich-text][populate]=*&populate[Sections][on][section.heading-above-grid][populate][Column]=*&populate[Sections][on][section.fa-qs][populate][QandA]=*&populate[Sections][on][section.collage][populate][Images]=*`,
     ),
   ]);
 
