@@ -4,57 +4,47 @@
       <div class='inquire'>
 
         {{! Header Section }}
-        <div class='inquire__header u-margin-bottom-medium'>
+        <div class='inquire__header'>
           <h1 class='heading-primary'>Inquire</h1>
           <p class='inquire__sub-text'>
             Tell us about your vision, and let’s craft a coffee experience your
             guests will never forget.
           </p>
+
+          {{! Dynamic Starting Rate Banner (Filters out low-budget leads) }}
+          <div class='inquire__rate-badge'>
+            <p class='inquire__rate-text'>
+              ✨
+              {{inquire.RateDisclaimer}}
+              <span class='inquire__rate-price'>${{inquire.StartingRate}}</span>
+              ({{inquire.MinimumHours}})
+            </p>
+          </div>
         </div>
 
-        {{! 3-Step Process: Built as a plain flex block to fit your existing row grid bounds }}
-        <div
-          style='display: flex; flex-wrap: wrap; gap: 3rem; justify-content: center; margin: 4rem 0 6rem 0;'
-        >
+        {{! 3-Step Process Flex Grid }}
+        <div class='inquire__process-steps'>
 
-          <div
-            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
-          >
-            <h3
-              class='heading-tertiary'
-              style='margin-bottom: 1rem; color: var(--color-ternary);'
-            >1. Inquire</h3>
-            <p
-              class='paragraph'
-              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
-            >Fill out our instant quote checker below with your event details.</p>
+          <div class='inquire__step-card'>
+            <h3 class='heading-tertiary u-margin-bottom-small'>1. Inquire</h3>
+            <p class='paragraph inquire__step-desc'>
+              Fill out our instant quote checker below with your event details.
+            </p>
           </div>
 
-          <div
-            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
-          >
-            <h3
-              class='heading-tertiary'
-              style='margin-bottom: 1rem; color: var(--color-ternary);'
-            >2. Customize</h3>
-            <p
-              class='paragraph'
-              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
-            >Select your specialty drinks, custom add-ons, and cart aesthetic.</p>
+          <div class='inquire__step-card'>
+            <h3 class='heading-tertiary u-margin-bottom-small'>2. Customize</h3>
+            <p class='paragraph inquire__step-desc'>
+              Select your specialty drinks, custom add-ons, and cart aesthetic.
+            </p>
           </div>
 
-          <div
-            style='flex: 1; min-width: 24rem; text-align: center; padding: 1rem;'
-          >
-            <h3
-              class='heading-tertiary'
-              style='margin-bottom: 1rem; color: var(--color-ternary);'
-            >3. Celebrate</h3>
-            <p
-              class='paragraph'
-              style='font-size: 1.4rem; max-width: 28rem; margin: 0 auto;'
-            >We show up with our mobile cart, handle the logistics, and serve
-              your guests.</p>
+          <div class='inquire__step-card'>
+            <h3 class='heading-tertiary u-margin-bottom-small'>3. Celebrate</h3>
+            <p class='paragraph inquire__step-desc'>
+              We show up with our mobile cart, handle the logistics, and serve
+              your guests.
+            </p>
           </div>
 
         </div>

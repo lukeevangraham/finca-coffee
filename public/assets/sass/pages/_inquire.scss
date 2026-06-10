@@ -4,6 +4,10 @@
 .section-inquire {
   padding: 10rem 0;
   background-color: variables.$color-white; // Soft Linen
+
+  @include mixins.respond(phone) {
+    padding: 6rem 0;
+  }
 }
 
 .inquire {
@@ -13,7 +17,7 @@
 
   &__header {
     text-align: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 
     h1 {
       font-family: variables.$font-display;
@@ -27,6 +31,66 @@
     font-size: 1.8rem;
     color: variables.$color-secondary;
     margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  // Dynamic Pill Banner (Filters out unqualified leads)
+  &__rate-badge {
+    display: inline-block;
+    background-color: variables.$color-quaternary; // Crema
+    padding: 1rem 2.5rem;
+    border-radius: 10rem;
+    margin-bottom: 1rem;
+  }
+
+  &__rate-text {
+    font-family: variables.$font-main;
+    font-size: 1.5rem;
+    font-weight: variables.$weight-bold;
+    color: variables.$color-secondary; // Warm Latte
+    margin: 0;
+  }
+
+  &__rate-price {
+    color: variables.$color-primary; // Deep Espresso
+    font-size: 1.8rem;
+    font-weight: variables.$weight-black;
+  }
+
+  // 3-Step Process Flow Component
+  &__process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    margin: 3rem 0 6rem 0;
+
+    @include mixins.respond(tab-port) {
+      gap: 4rem;
+      margin: 2rem 0 5rem 0;
+    }
+  }
+
+  &__step-card {
+    flex: 1;
+    min-width: 24rem;
+    text-align: center;
+    padding: 1rem;
+
+    h3 {
+      font-family: variables.$font-display;
+      color: variables.$color-secondary;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__step-desc {
+    font-family: variables.$font-main;
+    font-size: 1.4rem;
+    max-width: 28rem;
+    margin: 0 auto;
+    color: variables.$color-black;
+    line-height: 1.6;
   }
 
   // Styled to match the exact physical card dimensions of your original form
@@ -39,7 +103,7 @@
     border: 1px solid variables.$color-quaternary;
     box-shadow: 0 1.5rem 4rem rgba(variables.$color-primary, 0.05);
 
-    @media (max-width: 600px) {
+    @include mixins.respond(phone) {
       padding: 3rem 1.5rem;
     }
 
@@ -54,7 +118,6 @@
 }
 
 // Keeping your global primary button utility class compiled just in case
-// it's utilized as a generic fallback button layout elsewhere
 .btn--primary {
   background-color: variables.$color-primary;
   color: variables.$color-white;
