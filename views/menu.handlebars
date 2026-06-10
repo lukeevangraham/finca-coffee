@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    {{!-- Featured Items Section --}}
+    {{!-- 1. Featured Items Section --}}
     <div class="row">
       <div class="menu-grid">
         {{#each menuItems}}
@@ -24,7 +24,6 @@
                 <span class="menu-card__category">{{attributes.Category}}</span>
                 <h3 class="heading-tertiary">{{attributes.Name}}</h3>
                 <p class="menu-card__description">{{attributes.Description}}</p>
-                <span class="menu-card__price">From ${{attributes.Price_starting_at}}</span>
               </div>
             </div>
           {{/if}}
@@ -32,7 +31,7 @@
       </div>
     </div>
 
-    {{!-- Standard List Section --}}
+    {{!-- 2. Standard List Section (The Staples - No Prices) --}}
     <div class="row u-margin-top-huge">
       <div class="menu-list">
         <div class="u-center-text u-margin-bottom-big">
@@ -42,15 +41,46 @@
         <div class="menu-list__grid">
           {{#each menuItems}}
             {{#unless attributes.Is_featured}}
+              {{#unless (eq attributes.Category "Add-on")}}
+                <div class="menu-list__item">
+                  <div class="menu-list__header">
+                    <span class="menu-list__name">{{attributes.Name}}</span>
+                  </div>
+                  <p class="menu-list__desc">{{attributes.Description}}</p>
+                </div>
+              {{/unless}}
+            {{/unless}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    {{!-- 3. Add-on Experiences Section (With Prices Restored!) --}}
+    <div class="row u-margin-top-huge">
+      <div class="menu-list">
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">Custom Add-ons</h2>
+          <p class="menu-intro">Elevate your booking with curated upgrades and custom branding.</p>
+        </div>
+
+        <div class="menu-list__grid">
+          {{#each menuItems}}
+            {{#if (eq attributes.Category "Add-on")}}
               <div class="menu-list__item">
-                <div class="menu-list__header">
+                <div class="menu-list__header menu-list__header--has-price">
                   <span class="menu-list__name">{{attributes.Name}}</span>
-                  <span class="menu-list__dots"></span>
-                  <span class="menu-list__price">${{attributes.Price_starting_at}}</span>
+                  {{! Injects a clean inline styling block for the add-on pricing alignment }}
+                  <span class="menu-list__price-badge">
+                    ${{attributes.Price_starting_at}}
+                    {{! STRATAGEM: If PricePerHour is true, append the hourly suffix format }}
+                    {{#if attributes.PricePerHour}}
+                      <span class="menu-list__price-suffix">/ hr</span>
+                    {{/if}}
+                  </span>
                 </div>
                 <p class="menu-list__desc">{{attributes.Description}}</p>
               </div>
-            {{/unless}}
+            {{/if}}
           {{/each}}
         </div>
       </div>
@@ -67,7 +97,6 @@
               Inquire today to see if your date is available.
             </p>
             
-            {{!-- Same Button Partial for Consistency --}}
             {{> UI/button 
                 link="/inquire" 
                 text="Inquire for Availability" 

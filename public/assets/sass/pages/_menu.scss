@@ -95,7 +95,40 @@
   &__header {
     display: flex;
     align-items: baseline;
-    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+
+    // Safely handles layout spacing for sections displaying prices
+    &--has-price {
+      justify-content: space-between;
+    }
+  }
+
+  &__name {
+    font-family: $font-display;
+    color: $color-primary;
+    font-weight: $weight-bold;
+    font-size: 1.8rem;
+  }
+
+  &__price-badge {
+    font-family: $font-main;
+    font-size: 1.5rem;
+    font-weight: $weight-bold;
+    color: $color-secondary; // Rich warm brown
+
+    // Uses your exact variables to create a clean, elegant border tag
+    border: 1px solid $color-ternary;
+    padding: 0.2rem 0.8rem;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+
+  &__desc {
+    font-family: $font-main;
+    font-size: 1.4rem;
+    color: $color-secondary;
+    line-height: 1.6;
+    margin-top: 0.5rem;
   }
 
   &__name {
