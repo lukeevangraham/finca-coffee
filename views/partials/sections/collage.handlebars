@@ -1,35 +1,56 @@
 <section class='section-gallery'>
-  <div class='row'>
-    <div class='gallery-container'>
-      
-      {{! Gallery Heading }}
-      <div class='gallery-container__header'>
-        <h2 class='heading-secondary center-text'>On the Scene</h2>
-        <p class='gallery-container__sub-text center-text'>
-          Take a look at how Finca Coffee brings the craft café aesthetic to weddings, corporate events, and celebrations.
-        </p>
-      </div>
+  <div class='row-full-width'>
 
-      {{! Dynamic Photo Grid parsing Strapi nested formatting }}
-      <div class='gallery-grid'>
-        {{#if Images.data}}
-          {{#each Images.data}}
-            <div class='gallery-grid__item'>
-              <img 
-                src='{{this.attributes.url}}' 
-                alt='{{#if this.attributes.alternativeText}}{{this.attributes.alternativeText}}{{else}}Finca Coffee Event Photo{{/if}}' 
-                class='gallery-grid__img' 
-              />
-            </div>
-          {{/each}}
-        {{else}}
-          {{! Fallback Placeholders if no assets are found }}
-          <div class='gallery-grid__item'><img src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80' alt='Finca Coffee Cart' class='gallery-grid__img' /></div>
-          <div class='gallery-grid__item'><img src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80' alt='Specialty Latte' class='gallery-grid__img' /></div>
-          <div class='gallery-grid__item'><img src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80' alt='Pouring Espresso' class='gallery-grid__img' /></div>
-        {{/if}}
-      </div>
-
+    <div class='gallery-grid'>
+      {{#if Images.data}}
+        {{#each Images.data}}
+          <div class='gallery-grid__item'>
+            <img
+              src='{{getCloudinaryGallery this.attributes.url 800}}'
+              srcset='{{getCloudinaryGallery this.attributes.url 400}} 400w,
+          {{getCloudinaryGallery this.attributes.url 800}} 800w,
+          {{getCloudinaryGallery this.attributes.url 1200}} 1200w'
+              sizes='(max-width: 600px) 50vw, (max-width: 900px) 50vw, 33vw'
+              alt='Finca Coffee Event Photo'
+              class='gallery-grid__img'
+              loading='lazy'
+            />
+          </div>
+        {{/each}}
+      {{else}}
+        {{! Default Placeholders }}
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80'
+            alt='Finca Coffee Cart'
+            class='gallery-grid__img'
+          /></div>
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80'
+            alt='Specialty Latte'
+            class='gallery-grid__img'
+          /></div>
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
+            alt='Pouring Espresso'
+            class='gallery-grid__img'
+          /></div>
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1517256064527-09c53b2d0c6f?auto=format&fit=crop&w=600&q=80'
+            alt='Mobile Coffee Setup'
+            class='gallery-grid__img'
+          /></div>
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&w=600&q=80'
+            alt='Event Hospitality'
+            class='gallery-grid__img'
+          /></div>
+        <div class='gallery-grid__item'><img
+            src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80'
+            alt='Iced Coffee Details'
+            class='gallery-grid__img'
+          /></div>
+      {{/if}}
     </div>
+
   </div>
 </section>
