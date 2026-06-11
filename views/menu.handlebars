@@ -1,4 +1,5 @@
 <main class="menu-page">
+  {{!-- Section 1: Intro & Featured Items (Automatically gets $color-white) --}}
   <section class="section-menu">
     <div class="row">
       <div class="u-center-text u-margin-bottom-big">
@@ -7,13 +8,11 @@
       </div>
     </div>
 
-    {{!-- 1. Featured Items Section --}}
     <div class="row">
       <div class="menu-grid">
         {{#each menuItems}}
           {{#if attributes.Is_featured}}
             <div class="menu-card {{#if attributes.Image.data}}menu-card--has-img{{else}}menu-card--text-only{{/if}}">
-              
               {{#if attributes.Image.data}}
                 <div class="menu-card__img-box">
                   <img src="{{attributes.Image.data.attributes.url}}" alt="{{attributes.Name}}" class="menu-card__img">
@@ -30,9 +29,11 @@
         {{/each}}
       </div>
     </div>
+  </section>
 
-    {{!-- 2. Standard List Section (The Staples - No Prices) --}}
-    <div class="row u-margin-top-huge">
+  {{!-- Section 2: The Staples (Automatically gets zebra-striped to $color-quaternary!) --}}
+  <section class="section-menu-staples">
+    <div class="row">
       <div class="menu-list">
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">The Staples</h2>
@@ -54,9 +55,11 @@
         </div>
       </div>
     </div>
+  </section>
 
-    {{!-- 3. Add-on Experiences Section (With Prices Restored!) --}}
-    <div class="row u-margin-top-huge">
+  {{!-- Section 3: Custom Add-ons (Automatically gets $color-white) --}}
+  <section class="section-menu-addons">
+    <div class="row">
       <div class="menu-list">
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">Custom Add-ons</h2>
@@ -69,10 +72,8 @@
               <div class="menu-list__item">
                 <div class="menu-list__header menu-list__header--has-price">
                   <span class="menu-list__name">{{attributes.Name}}</span>
-                  {{! Injects a clean inline styling block for the add-on pricing alignment }}
                   <span class="menu-list__price-badge">
                     ${{attributes.Price_starting_at}}
-                    {{! STRATAGEM: If PricePerHour is true, append the hourly suffix format }}
                     {{#if attributes.PricePerHour}}
                       <span class="menu-list__price-suffix">/ hr</span>
                     {{/if}}
@@ -85,26 +86,26 @@
         </div>
       </div>
     </div>
+  </section>
 
-    {{!-- Reuse the CTA Section --}}
-    <section class='section-cta u-margin-top-huge'>
-      <div class='row'>
-        <div class='cta u-center-text'>
-            <h2 class='heading-secondary u-margin-bottom-small'>Ready to elevate your event?</h2>
+  {{!-- Section 4: Call to Action (Automatically gets zebra-striped to $color-quaternary!) --}}
+  <section class="section-cta">
+    <div class="row">
+      <div class="cta u-center-text">
+        <h2 class="heading-secondary u-margin-bottom-small">Ready to elevate your event?</h2>
 
-            <p class='cta__text u-margin-bottom-medium'>
-              Love our flavors? Let's bring them to your celebration. 
-              Inquire today to see if your date is available.
-            </p>
-            
-            {{> UI/button 
-                link="/inquire" 
-                text="Inquire for Availability" 
-                style="primary" 
-                class="btn--animated"
-            }}
-        </div>
+        <p class="cta__text u-margin-bottom-medium">
+          Love our flavors? Let's bring them to your celebration. 
+          Inquire today to see if your date is available.
+        </p>
+        
+        {{> UI/button 
+            link="/inquire" 
+            text="Inquire for Availability" 
+            style="primary" 
+            class="btn--animated"
+        }}
       </div>
-    </section>
+    </div>
   </section>
 </main>

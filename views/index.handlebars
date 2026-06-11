@@ -2,13 +2,13 @@
 
   {{!-- <div class="row"> --}}
 
-{{!-- {{log sections}} --}}
+
 
 <main>
 
     {{#each sections}}
   {{#if (eq __component "section.hero")}}
-  {{log we have a hero section}}
+
     {{> sections/hero this}}
   {{/if}}
   

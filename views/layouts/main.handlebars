@@ -20,25 +20,34 @@
   <body>
 
     <section class="header">
-      <a href="/">
-        <div>Finca Coffee</div>
+      {{!-- NAVBAR LOGO & TEXT: Combined into a single cohesive flex unit --}}
+      <a href="/" class="header__logo-link" aria-label="Finca Coffee Home">
+        <img src="/assets/images/finca-logo-transparent.svg" alt="" class="logo-vector logo-vector--navbar" />
+        <span class="logo-text logo-text--navbar">Finca Coffee</span>
       </a>
+
       <div class="header__drawer-toggle">
         <div></div>
         <div></div>
         <div></div>
       </div>
       <div class="desktop-only">
-      {{> nav/nav-items }}
+        {{> nav/nav-items }}
       </div>
     </section>
       
-<div class="Backdrop" id="backdrop"></div>
+    <div class="Backdrop" id="backdrop"></div>
       
     <div class="SideDrawer" id="side-drawer">
-      <div class="SideDrawer__logo">Finca Coffee</div>
+      {{!-- SIDEDRAWER LOGO & TEXT --}}
+      <div class="SideDrawer__logo">
+        <a href="/" class="SideDrawer__logo-link" aria-label="Finca Coffee Home">
+          <img src="/assets/images/finca-logo-transparent.svg" alt="" class="SideDrawer__logo-icon" />
+          <span class="SideDrawer__logo-text">Finca Coffee</span>
+        </a>
+      </div>
       <nav>
-        {{> nav/nav-items }} {{!-- Reuse your nav items --}}
+        {{> nav/nav-items }}
       </nav>
     </div>
 

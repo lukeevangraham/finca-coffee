@@ -19,13 +19,38 @@
   }
 
   &__logo {
-    font-family: variables.$font-display;
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    color: variables.$color-quaternary;
     margin-bottom: 2rem;
-    letter-spacing: 2px;
+
+    &-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start; // Keeps it aligned left on desktop
+      text-decoration: none;
+
+      @include mixins.respond(tab-port) {
+        align-items: center; // Centers the logo block elements on mobile
+      }
+    }
+
+    &-icon {
+      height: 60px; // Adjust this value to scale your branch asset up or down
+      width: auto;
+      margin-bottom: 0.8rem;
+      display: block;
+
+      // Note: If finca-logo-transparent.svg is black and your footer background is dark,
+      // uncomment the line below to instantly invert the black linework into white.
+      filter: brightness(0) invert(1);
+    }
+
+    &-text {
+      font-family: variables.$font-display;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: variables.$color-quaternary;
+      letter-spacing: 2px;
+    }
   }
 
   &__description {
@@ -61,7 +86,15 @@
 
     &:hover {
       color: variables.$color-quaternary;
-      transform: translateX(5px);
+
+      // Prevent the link from sliding out to the right when hovered on mobile layout
+      @include mixins.respond(tab-port) {
+        transform: none;
+      }
+      @include mixins.respond(desktop-up) {
+        // Assuming you use a structure like this, or just leave it default:
+        transform: translateX(5px);
+      }
     }
   }
 

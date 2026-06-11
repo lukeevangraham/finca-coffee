@@ -27,10 +27,33 @@
   }
 
   &__logo {
-    font-family: variables.$font-display;
-    font-size: 2.5rem;
-    color: variables.$color-primary;
     margin-bottom: 4rem;
+
+    &-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start; // Left-aligned structure inside the drawer
+      text-decoration: none;
+    }
+
+    &-icon {
+      height: 50px; // Slightly smaller than the footer to fit mobile drawers comfortably
+      width: auto;
+      margin-bottom: 0.6rem;
+      display: block;
+
+      // Because the drawer background is white, your black SVG linework
+      // will look perfectly sharp out of the box. No filters needed here!
+    }
+
+    &-text {
+      font-family: variables.$font-display;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: variables.$color-primary; // Keeps the original Espresso color
+      letter-spacing: 2px;
+    }
   }
 
   nav {
