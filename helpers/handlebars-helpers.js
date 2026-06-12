@@ -10,4 +10,9 @@ module.exports = {
     // CHANGED: Upgraded from g_faces to g_auto:subject,c_fill
     return url.replace('/upload/', `/upload/c_fill,g_auto:subject,w_${width}/`);
   },
+  section: function (name, options) {
+    if (!this._sections) this._sections = {};
+    this._sections[name] = options.fn(this);
+    return null;
+  },
 };

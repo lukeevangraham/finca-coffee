@@ -28,3 +28,18 @@
     </div>
   </div>
 </section>
+
+
+{{#section 'head'}}
+  {{#if mainImage.data.[0].attributes}}
+    {{#with mainImage.data.[0].attributes}}
+      <link 
+        rel="preload" 
+        as="image" 
+        href="{{url}}" 
+        imagesrcset="{{getCloudinaryResize url 640}}, {{getCloudinaryResize url 1200}}, {{getCloudinaryResize url 1920}}"
+        imagesizes="100vw"
+      >
+    {{/with}}
+  {{/if}}
+{{/section}}
