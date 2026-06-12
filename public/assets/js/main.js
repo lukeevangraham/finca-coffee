@@ -19,10 +19,16 @@ navLinks.forEach((link) => {
   link.addEventListener('click', toggleDrawer);
 });
 
-// 🚀 CLEANUP: Remove the animation block safely once the layout pipeline stabilizes
-document.addEventListener('DOMContentLoaded', () => {
-  // A tiny 50ms macro-task delay ensures the browser completes its first layout layout frame cleanly
+// 🚀 SAFARI-COMPATIBLE TIMING PIPELINE: Clears the preload locks safely
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      document.body.classList.remove('preload');
+    }, 100);
+  });
+} else {
+  // If the DOM is already interactive due to fast network rendering engines
   setTimeout(() => {
     document.body.classList.remove('preload');
-  }, 50);
-});
+  }, 100);
+}

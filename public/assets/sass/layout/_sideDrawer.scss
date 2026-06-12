@@ -1,23 +1,7 @@
 @use '../abstracts/mixins';
 @use '../abstracts/variables';
 
-// 1. COMPLETELY HALT ALL ANIMATIONS WHILE THE ASYNC CSS IS HYDRATING
-body.preload {
-  &,
-  & * {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -ms-transition: none !important;
-    -o-transition: none !important;
-    transition: none !important;
-
-    /* 🔥 SAFARI LIFECYCLE FIX: Force transition values to absolute 0 during preload */
-    -webkit-transition-duration: 0s !important;
-    transition-duration: 0s !important;
-    -webkit-transition-delay: 0s !important;
-    transition-delay: 0s !important;
-  }
-}
+// 🚀 CLEANED: Removed the redundant body.preload block that was clashing with our inline styles!
 
 .SideDrawer {
   position: fixed;
@@ -31,21 +15,20 @@ body.preload {
   padding: 3rem;
   box-sizing: border-box;
 
-  // 2. UPDATED TRANSITION LOGIC
-  // We add visibility here so the browser mathematically ignores the container until opened
+  // Slide out logic: Handled smoothly across Chrome and Safari engines
   transition:
     transform 0.3s ease-out,
     visibility 0.3s ease-out;
   transform: translateX(100%); // Hidden by default
-  visibility: hidden; // 👈 FIXES THE FLASH: Keeps it completely hidden on frame 1
+  visibility: hidden; // Keeps it completely hidden on frame 1
 
   &.open {
     transform: translateX(0);
-    visibility: visible; // 👈 Snaps visibility back to normal when toggled open
+    visibility: visible; // Snaps visibility back to normal when toggled open
     box-shadow: -5px 0 15px rgba(variables.$color-black, 0.1);
   }
 
-  // --- Keep all your existing nesting below exactly the same ---
+  // --- Keep all your existing nesting below exactly the same (logo, nav list, etc.) ---
   @include mixins.respond(tab-port) {
     // Only displayed on mobile/tablet
   }
@@ -60,7 +43,7 @@ body.preload {
   }
 }
 
-// 3. CLEAN UP THE BACKDROP FLASH TOO
+// The dimming effect for the rest of the page
 .Backdrop {
   width: 100%;
   height: 100%;
