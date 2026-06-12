@@ -10,6 +10,12 @@ body.preload {
     -ms-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
+
+    /* 🔥 SAFARI LIFECYCLE FIX: Force transition values to absolute 0 during preload */
+    -webkit-transition-duration: 0s !important;
+    transition-duration: 0s !important;
+    -webkit-transition-delay: 0s !important;
+    transition-delay: 0s !important;
   }
 }
 
