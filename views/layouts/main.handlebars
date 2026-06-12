@@ -19,17 +19,19 @@
     <title>{{#if metaTitle}}{{metaTitle}}{{else}}Finca Coffee | Boutique Mobile Coffee Cart{{/if}}</title>
     <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Elevate your Nebraska events with Finca Coffee's boutique mobile espresso bar. Starting at $650.{{/if}}">
 
+    <!-- 🔥 CRITICAL INLINE TIMING FIX: Keeps layout stable on load without breaking transitions -->
     <style>
-      /* 1. Freeze the drawer strictly offscreen ONLY while the body is preloading */
+      /* 1. Hide the drawer structure exclusively during the page preloading frame */
+      body.preload #side-drawer,
       body.preload .SideDrawer {
-        position: fixed;
-        right: 0;
-        top: 0;
-        transform: translateX(100%);
-        visibility: hidden;
+        position: fixed !important;
+        right: 0 !important;
+        top: 0 !important;
+        transform: translateX(100%) !important;
+        visibility: hidden !important;
       }
       
-      /* 2. Freeze browser layout rendering timelines until JavaScript clears the state */
+      /* 2. Freeze browser layout engine transitions globally while HTML parses */
       body.preload, 
       body.preload * {
         -webkit-transition: none !important;
@@ -44,8 +46,8 @@
       }
     </style>
 
-    <link rel="preload" href="/assets/css/style.css?v=1.0.1" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/assets/css/style.css?v=1.0.1"></noscript>
+    <link rel="preload" href="/assets/css/style.css?v=1.0.3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/style.css?v=1.0.3"></noscript>
 
     {{! Dynamic page-specific injections (our preloaded image headers run here) }}
     {{{_sections.head}}}
