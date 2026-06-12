@@ -1,9 +1,8 @@
 @use '../abstracts/mixins';
 @use '../abstracts/variables';
 
-// 🚀 CLEANED: Removed the redundant body.preload block that was clashing with our inline styles!
-
 .SideDrawer {
+  // background-color: orangered;
   position: fixed;
   width: 30rem;
   max-width: 70%;
@@ -20,7 +19,7 @@
     transform 0.3s ease-out,
     visibility 0.3s ease-out;
   transform: translateX(100%); // Hidden by default
-  visibility: hidden; // Keeps it completely hidden on frame 1
+  visibility: hidden; // Keeps it completely hidden on frame 1 until toggled
 
   &.open {
     transform: translateX(0);
@@ -28,18 +27,93 @@
     box-shadow: -5px 0 15px rgba(variables.$color-black, 0.1);
   }
 
-  // --- Keep all your existing nesting below exactly the same (logo, nav list, etc.) ---
   @include mixins.respond(tab-port) {
     // Only displayed on mobile/tablet
   }
 
   &__logo {
     margin-bottom: 4rem;
-    // ... rest of your logo code ...
+
+    &-link {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start; // Left-aligned structure inside the drawer
+      text-decoration: none;
+    }
+
+    &-icon {
+      height: 50px; // Slightly smaller than the footer to fit mobile drawers comfortably
+      width: auto;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    &-text {
+      font-family: variables.$font-display;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: variables.$color-primary; // Keeps the original Espresso color
+      letter-spacing: 2px;
+    }
   }
 
   nav {
-    // ... rest of your navigation/button code ...
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    li {
+      border-bottom: 1px solid rgba(variables.$color-ternary, 0.2);
+      padding-bottom: 1.5rem;
+
+      // If the LI contains a button, we don't want the border or padding
+      &:has(.btn) {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-top: 1rem;
+      }
+    }
+
+    // 1. Target ONLY standard navigation links
+    a:not(.btn) {
+      text-decoration: none;
+      font-family: variables.$font-main;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: variables.$color-primary; // Espresso
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      transition: all 0.2s;
+
+      &:hover {
+        color: variables.$color-ternary; // Almond
+        padding-left: 1rem;
+      }
+    }
+
+    // 2. Target the button specifically to make it stand out on the white BG
+    .btn {
+      width: 100%;
+      text-align: center;
+
+      &--primary {
+        background-color: variables.$color-primary !important;
+        color: variables.$color-white !important;
+        display: block;
+
+        &:hover {
+          background-color: variables.$color-secondary !important;
+          padding-left: 0; // Prevent the "slide" effect on the actual button
+        }
+      }
+    }
   }
 }
 
