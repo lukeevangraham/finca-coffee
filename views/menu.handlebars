@@ -15,8 +15,17 @@
             <div class="menu-card {{#if attributes.Image.data}}menu-card--has-img{{else}}menu-card--text-only{{/if}}">
               {{#if attributes.Image.data}}
                 <div class="menu-card__img-box">
-                  <img src="{{attributes.Image.data.attributes.url}}" alt="{{attributes.Name}}" class="menu-card__img">
-                </div>
+  <img 
+    src="{{attributes.Image.data.attributes.url}}" 
+    srcset="{{getCloudinaryResize attributes.Image.data.attributes.url 300}},
+            {{getCloudinaryResize attributes.Image.data.attributes.url 600}},
+            {{getCloudinaryResize attributes.Image.data.attributes.url 900}}"
+    sizes="(max-width: 56.25em) 100vw, (max-width: 75em) 50vw, 33vw"
+    alt="{{attributes.Name}}" 
+    class="menu-card__img"
+    loading="lazy"
+  >
+</div>
               {{/if}}
 
               <div class="menu-card__content">
