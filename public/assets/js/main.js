@@ -13,8 +13,16 @@ drawerToggle.addEventListener('click', toggleDrawer);
 // Close drawer when clicking the backdrop
 backdrop.addEventListener('click', toggleDrawer);
 
-// Close drawer when clicking a link (optional, but good for UX)
+// Close drawer when clicking a link
 const navLinks = document.querySelectorAll('.SideDrawer a');
 navLinks.forEach((link) => {
   link.addEventListener('click', toggleDrawer);
+});
+
+// 🚀 CLEANUP: Remove the animation block safely once the layout pipeline stabilizes
+document.addEventListener('DOMContentLoaded', () => {
+  // A tiny 50ms macro-task delay ensures the browser completes its first layout layout frame cleanly
+  setTimeout(() => {
+    document.body.classList.remove('preload');
+  }, 50);
 });
