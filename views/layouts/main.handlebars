@@ -3,42 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {{!-- <title>Finca Coffee</title> --}}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Preload the font stylesheet asynchronously -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
 
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
-
-
-{{!-- Dynamically set the title and description --}}
     <title>{{#if metaTitle}}{{metaTitle}}{{else}}Finca Coffee | Boutique Mobile Coffee Cart{{/if}}</title>
     <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Elevate your Nebraska events with Finca Coffee's boutique mobile espresso bar. Starting at $650.{{/if}}">
 
+    <style>
+      html { font-size: 62.5%; box-sizing: border-box; }
+      *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
+      body { font-family: sans-serif; background-color: #fbf9f6; overflow-x: hidden; }
+      body.preload * { -webkit-transition: none !important; -moz-transition: none !important; -ms-transition: none !important; -o-transition: none !important; transition: none !important; }
+      
+      .header { display: flex; align-items: center; justify-content: space-between; padding: 2rem 3rem; position: absolute; width: 100%; top: 0; left: 0; z-index: 90; }
+      .header__logo-link { display: flex; align-items: center; text-decoration: none; gap: 1rem; }
+      .logo-vector--navbar { height: 40px; width: auto; display: block; }
+      .logo-text--navbar { font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #2b2621; }
+      .header__drawer-toggle { display: flex; flex-direction: column; gap: 0.5rem; cursor: pointer; z-index: 101; }
+      .header__drawer-toggle div { width: 2.5rem; height: 3px; background-color: #2b2621; transition: all 0.3s; }
+      
+      .Backdrop { width: 100%; height: 100%; position: fixed; z-index: 100; left: 0; top: 0; background-color: rgba(0,0,0, 0.5); display: none; }
+      .SideDrawer { position: fixed; width: 30rem; max-width: 70%; height: 100vh; right: 0; top: 0; z-index: 200; background-color: #ffffff; padding: 3rem; transform: translateX(100%); visibility: hidden; transition: transform 0.3s ease-out, visibility 0.3s ease-out; }
+      
+      .hero { position: relative; width: 100%; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; background-color: #1a1a1a; overflow: hidden; }
+      .hero__image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; z-index: 1; }
+      .hero__overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 2; display: flex; align-items: center; justify-content: center; width: 100%; }
+      .hero__content { text-align: center; color: #ffffff; padding: 0 2rem; z-index: 3; max-width: 800px; }
+      .hero__headline { font-size: 4.5rem; font-weight: 900; margin-bottom: 2rem; text-transform: uppercase; }
+      .hero__subheading { font-size: 1.8rem; margin-bottom: 3rem; line-height: 1.6; }
+      .desktop-only { display: none; }
+      @media (min-width: 56.25em) { .desktop-only { display: block; } .header__drawer-toggle { display: none; } .hero { height: 85vh; } .hero__headline { font-size: 6rem; } }
+    </style>
 
-    <!-- 1. Tell the browser to download the CSS in the background immediately -->
-<link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
 
-<!-- 2. Fallback for browsers that have JavaScript disabled -->
-<noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
-
-    {{! Dynamic page-specific injections look here }}
+    {{! Dynamic page-specific injections (our preloaded image headers run here) }}
     {{{_sections.head}}}
-    
   </head>
   <body class="preload">
 
     <section class="header">
-      {{!-- NAVBAR LOGO & TEXT: Combined into a single cohesive flex unit --}}
       <a href="/" class="header__logo-link" aria-label="Finca Coffee Home">
         <img src="/assets/images/finca-logo-transparent.svg" alt="" class="logo-vector logo-vector--navbar" />
         <span class="logo-text logo-text--navbar">Finca Coffee</span>
@@ -57,7 +72,6 @@
     <div class="Backdrop" id="backdrop"></div>
       
     <div class="SideDrawer" id="side-drawer">
-      {{!-- SIDEDRAWER LOGO & TEXT --}}
       <div class="SideDrawer__logo">
         <a href="/" class="SideDrawer__logo-link" aria-label="Finca Coffee Home">
           <img src="/assets/images/finca-logo-transparent.svg" alt="" class="SideDrawer__logo-icon" />
@@ -74,6 +88,5 @@
     {{> nav/footer }}
 
     <script src="/assets/js/main.js" defer></script>
-
   </body>
 </html>
