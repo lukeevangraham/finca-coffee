@@ -7,7 +7,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Preload the font stylesheet asynchronously -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" media="print" onload="this.media='all'">
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,7 +25,11 @@
     <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Elevate your Nebraska events with Finca Coffee's boutique mobile espresso bar. Starting at $650.{{/if}}">
 
 
-    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- 1. Tell the browser to download the CSS in the background immediately -->
+<link rel="preload" href="/assets/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<!-- 2. Fallback for browsers that have JavaScript disabled -->
+<noscript><link rel="stylesheet" href="/assets/css/style.css"></noscript>
 
     {{! Dynamic page-specific injections look here }}
     {{{_sections.head}}}
@@ -66,7 +73,7 @@
 
     {{> nav/footer }}
 
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js" defer></script>
 
   </body>
 </html>

@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const { engine } = require('express-handlebars'); // Updated for v8.x
 require('dotenv').config();
@@ -5,7 +6,8 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3842;
 const app = express();
 
-app.use(express.static('public'));
+app.use(compression()); // Enable gzip compression for all responses
+app.use(express.static('public', { maxAge: '1y' })); // Serve static files with caching
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

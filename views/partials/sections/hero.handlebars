@@ -2,14 +2,12 @@
   {{! 1. Handle the Image specifically }}
   {{#with mainImage.data.[0].attributes}}
     <img
-      src='{{url}}'
-      srcset='{{getCloudinaryResize url 640}}, {{getCloudinaryResize
-        url
-        1200
-      }}, {{getCloudinaryResize url 1920}}'
+      src='{{getCloudinaryOptimize url}}' {{!-- ✨ Upgraded fallback --}}
+      srcset='{{getCloudinaryResize url 640}}, {{getCloudinaryResize url 1200}}, {{getCloudinaryResize url 1920}}'
       sizes='100vw'
       alt='{{alternativeText}}'
       class='hero__image'
+      fetchpriority='high' {{!-- 🚀 Forces instant loading priority --}}
     />
   {{/with}}
 
@@ -36,9 +34,10 @@
       <link 
         rel="preload" 
         as="image" 
-        href="{{url}}" 
+        href="{{getCloudinaryOptimize url}}" {{!-- ✨ Upgraded preload fallback --}}
         imagesrcset="{{getCloudinaryResize url 640}}, {{getCloudinaryResize url 1200}}, {{getCloudinaryResize url 1920}}"
         imagesizes="100vw"
+        fetchpriority="high" {{!-- 🚀 Forces priority in the head --}}
       >
     {{/with}}
   {{/if}}
