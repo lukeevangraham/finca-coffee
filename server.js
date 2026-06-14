@@ -1,3 +1,6 @@
+if (!Object.hasOwn) {
+  require('object.hasown').shim();
+}
 const compression = require('compression');
 const express = require('express');
 const { engine } = require('express-handlebars'); // Updated for v8.x
