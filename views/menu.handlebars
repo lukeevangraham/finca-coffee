@@ -40,28 +40,53 @@
     </div>
   </section>
 
-  {{!-- Section 2: The Staples (Automatically gets zebra-striped to $color-quaternary!) --}}
+  {{!-- Section 2: The Staples & Non-Coffee (Automatically gets zebra-striped to $color-quaternary!) --}}
   <section class="section-menu-staples">
     <div class="row">
       <div class="menu-list">
+        
+        {{!-- Sub-Section A: The Staples (All standard drink categories) --}}
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">The Staples</h2>
+        </div>
+
+        <div class="menu-list__grid u-margin-bottom-big">
+          {{#each menuItems}}
+            {{#unless attributes.Is_featured}}
+              {{#unless (eq attributes.Category "Add-on")}}
+                {{#unless (eq attributes.Category "Non-Coffee")}}
+                  <div class="menu-list__item">
+                    <div class="menu-list__header">
+                      <span class="menu-list__name">{{attributes.Name}}</span>
+                    </div>
+                    <p class="menu-list__desc">{{attributes.Description}}</p>
+                  </div>
+                {{/unless}}
+              {{/unless}}
+            {{/unless}}
+          {{/each}}
+        </div>
+
+        {{!-- Sub-Section B: Non-Coffee Alternatives --}}
+        <div class="u-center-text u-margin-bottom-big">
+          <h2 class="heading-secondary">Non-Coffee Alternatives</h2>
         </div>
 
         <div class="menu-list__grid">
           {{#each menuItems}}
             {{#unless attributes.Is_featured}}
-              {{#unless (eq attributes.Category "Add-on")}}
+              {{#if (eq attributes.Category "Non-Coffee")}}
                 <div class="menu-list__item">
                   <div class="menu-list__header">
                     <span class="menu-list__name">{{attributes.Name}}</span>
                   </div>
                   <p class="menu-list__desc">{{attributes.Description}}</p>
                 </div>
-              {{/unless}}
+              {{/if}}
             {{/unless}}
           {{/each}}
         </div>
+
       </div>
     </div>
   </section>
